@@ -499,7 +499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 301072702}
   _offset: {x: 0, y: 2, z: -5}
-  _rotation: {x: 22.5, y: 0, z: 0}
+  _rotationStart: {x: 0, y: 0, z: 0}
 --- !u!1 &1152151807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,7 +1025,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1065170951, guid: 460a9397242ce424e909a10152a4dd0e, type: 3}
       propertyPath: _speed
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1065170951, guid: 460a9397242ce424e909a10152a4dd0e, type: 3}
       propertyPath: _jumpForce
@@ -1033,7 +1033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1065170951, guid: 460a9397242ce424e909a10152a4dd0e, type: 3}
       propertyPath: _ultraGrav
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1065170951, guid: 460a9397242ce424e909a10152a4dd0e, type: 3}
       propertyPath: _jumpForceRadius

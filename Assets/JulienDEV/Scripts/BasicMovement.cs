@@ -25,8 +25,12 @@ public class BasicMovement : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (IsGrounded()) { Movement(); };
-        Jump();
+        if (IsGrounded())
+        {
+            Movement();
+            Jump();
+        };
+        
         UltraGravity();
     }
 
@@ -37,7 +41,8 @@ public class BasicMovement : MonoBehaviour
         float h = Input.GetAxis("Horizontal") * _speed;
         float v = Input.GetAxis("Vertical") * _speed;
 
-        Vector3 rbMovement = new Vector3(h * _speed, 0f, v * _speed) * Time.deltaTime;
+        Vector3 rbMovement = new Vector3(h, 0f, v).normalized * _speed * Time.deltaTime;
+
 
         _rb.AddRelativeForce(rbMovement, ForceMode.VelocityChange);
     }
