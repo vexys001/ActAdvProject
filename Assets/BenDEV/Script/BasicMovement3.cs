@@ -12,25 +12,25 @@ public class BasicMovement3 : MonoBehaviour
     public float jumpHeight = 3;
     Vector3 velocity;
     private bool isGrounded;
-    public Transform groundCheck;
+    public Transform groundCheck;                     
     private float groundDistance = 0.4f;
     public LayerMask groundMask;
     private float turnSmoothVelocity;
     public float turnSmoothTime = 0.1f;
     [Header("Combat")]
-    public GameObject throwablepog;
-    public Transform pogspawnloc1;
-    public Transform pogspawnlocbutbasedoncameralol;
-    public Transform pogspawnloc2;
+    public GameObject throwablePog;
+    public Transform pogSpawnLoc1;
+    public Transform pogSpawnLocButBasedOnCameraLol;
+    public Transform pogSpawnLoc2;
     private bool isShooting;
-    public GameObject thirdpersoncamerathingy;
-    public GameObject aimcamerathingy;
+    public GameObject thirdPersonCameraThingy;
+    public GameObject aimCameraThingy;
     public GameObject theCursor;
 
     private void Start()
     {
-        thirdpersoncamerathingy.SetActive(true);
-        aimcamerathingy.SetActive(false);
+        thirdPersonCameraThingy.SetActive(true);
+        aimCameraThingy.SetActive(false);
         theCursor.SetActive(false);
     }
     // Update is called once per frame
@@ -46,7 +46,8 @@ public class BasicMovement3 : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+            // velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+            velocity.y = jumpHeight;
         }
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
@@ -68,29 +69,29 @@ public class BasicMovement3 : MonoBehaviour
             }
         }
         //************************FIRING*************************
-        pogspawnlocbutbasedoncameralol.rotation = cam.rotation;
+        pogSpawnLocButBasedOnCameraLol.rotation = cam.rotation;
         // bla bla bla something about health and number of pug in an array or something
         if (Input.GetButton("Fire2") ) /*|| Mathf.Round(Input.GetAxisRaw("Fire2")) < 0)*/
         {
-            thirdpersoncamerathingy.SetActive(false);
-            aimcamerathingy.SetActive(true);
+            thirdPersonCameraThingy.SetActive(false);
+            aimCameraThingy.SetActive(true);
             theCursor.SetActive(true);
             if (((Input.GetButtonDown("Fire1") || Mathf.Round(Input.GetAxisRaw("Fire1")) > 0)) && isShooting == false)
             {
                 isShooting = true;
-                Instantiate(throwablepog, pogspawnloc2.transform.position, pogspawnloc2.transform.rotation);
+                Instantiate(throwablePog, pogSpawnLoc2.transform.position, pogSpawnLoc2.transform.rotation);
                 StartCoroutine(shootingcooldown()); //I had to start a cooldown because it would spawn thousands of bullet when pressing the gamepad trigger lol
             }
         } else
         {
-            thirdpersoncamerathingy.SetActive(true);
-            aimcamerathingy.SetActive(false);
+            thirdPersonCameraThingy.SetActive(true);
+            aimCameraThingy.SetActive(false);
             theCursor.SetActive(false);
         }
         if (((Input.GetButtonDown("Fire1") || Mathf.Round(Input.GetAxisRaw("Fire1")) > 0)) && isShooting == false)
         {
           isShooting = true;
-          Instantiate(throwablepog, pogspawnloc1.transform.position, pogspawnloc1.transform.rotation);
+          Instantiate(throwablePog, pogSpawnLoc1.transform.position, pogSpawnLoc1.transform.rotation);
             StartCoroutine(shootingcooldown()); //I had to start a cooldown because it would spawn thousands of bullet when pressing the gamepad trigger lol
         }
     }
