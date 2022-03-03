@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4707183598703341363}
-  - component: {fileID: 8241123879540085270}
+  - component: {fileID: 8628007785747487514}
   m_Layer: 0
   m_Name: StackablePog
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8241123879540085270
+--- !u!114 &8628007785747487514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4707183598703341360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5928b629cee513544a3fe743b1f3c58f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3eda7465fe8de6048b56cdb6c48fec4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4707183599769566290
@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4707183599769566301}
   m_Layer: 0
-  m_Name: NextPog
+  m_Name: NextPogPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4707183599769566290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
