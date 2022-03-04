@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pog : MonoBehaviour
 {
     string currentState;
-    GameObject nextPog;
+    public GameObject nextPog, stack;
 
     [Header("Shooting Vars")]
     public float Speed = 10f;
@@ -31,6 +31,7 @@ public class Pog : MonoBehaviour
     void RunStates()
     {
         if (currentState.Equals("isShooting")) Shoot();
+        if (currentState.Equals("isShielding")) Shield();
     }
 
     void StartShoot()
@@ -50,5 +51,23 @@ public class Pog : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    
+    void StartShield(GameObject pStack)
+    {
+        stack = pStack;
+        transform.SetParent(null);
+        currentState = "isShielding";
+        transform.position += Vector3.forward;
+        Invoke("EndShield", 5f);
+    }
+
+    void Shield()
+    {
+        transform.RotateAround(stack.transform.position, Vector3.up, 1f);
+    }
+
+    void EndShield()
+    {
+        stack.SendMessage("AddPog", gameObject);
+        Destroy(gameObject);
+    }
 }
