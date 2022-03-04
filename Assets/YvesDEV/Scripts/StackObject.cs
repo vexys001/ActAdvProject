@@ -12,7 +12,6 @@ public class StackObject : MonoBehaviour
     public GameObject samplePog;
     int pogCount;
     GameObject firstPogGO, lastPogGO;
-    Pog topPog, botPog;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +26,21 @@ public class StackObject : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P)) AddPog();
         if (Input.GetKeyDown(KeyCode.Q) && pogCount > 1) ShootPog();
+        if (Input.GetKeyDown(KeyCode.E) && pogCount > 1) ShieldPog();
     }
 
     void AddPog()
     {
         pogCount++;
         lastPogGO = Instantiate(samplePog, lastPogGO.transform.GetChild(0));
+    }
+
+    void AddPog(GameObject pPog)
+    {
+        pogCount++;
+        var temp = lastPogGO.transform.GetChild(0);
+        lastPogGO = pPog;
+        lastPogGO.transform.SetParent(temp);
     }
 
     void ShootPog()
@@ -54,5 +62,26 @@ public class StackObject : MonoBehaviour
         //Destroy TEMP
         //Destroy(temp);
         temp.SendMessage("StartShoot");
+    }
+
+    void ShieldPog()
+    {
+        pogCount--;
+
+        //Save first Pog gameobject temporarly
+        var temp = firstPogGO;
+
+        // Replace the first pog with the next Pog gameobject
+        firstPogGO = firstPogGO.transform.GetChild(0).GetChild(0).gameObject;
+
+        //Unparent the the stack for the top
+        temp.transform.GetChild(0).DetachChildren();
+
+        //Parent back the stack to the holder
+        firstPogGO.transform.SetParent(transform);
+
+        //Destroy TEMP
+        //Destroy(temp);
+        temp.SendMessage("StartShield", gameObject);
     }
 }
