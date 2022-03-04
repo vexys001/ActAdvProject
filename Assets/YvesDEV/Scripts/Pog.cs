@@ -35,6 +35,7 @@ public class Pog : MonoBehaviour
 
     void StartShoot()
     {
+        transform.SetParent(null);
         currentState = "isShooting";
     }
 
