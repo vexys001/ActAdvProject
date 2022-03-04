@@ -52,6 +52,7 @@ public class StackObject : MonoBehaviour
         firstPogGO.transform.SetParent(transform);
 
         //Destroy TEMP
-        Destroy(temp);
+        //Destroy(temp);
+        temp.SendMessage("StartShoot");
     }
 }

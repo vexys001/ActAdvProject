@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Pog : MonoBehaviour
 {
-    GameObject nextPog;
     string currentState;
+    GameObject nextPog;
+
+    [Header("Shooting Vars")]
+    public float Speed = 10f;
+    public float Lifespan = 3f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +40,8 @@ public class Pog : MonoBehaviour
 
     void Shoot()
     {
-
+        transform.position += transform.forward * Time.deltaTime * Speed;
+        Destroy(gameObject, Lifespan);
     }
 
     void EndShoot()
