@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     public float speed = 6;
     public float gravity = -9.81f;
     public float jumpHeight = 3;
-    Vector3 velocity;
+    public Vector3 velocity;
 
     private bool isGrounded;
     public Transform groundCheck;
@@ -38,14 +38,14 @@ public class Movement : MonoBehaviour
     void Update()
     {
         //****************************JUMPING & GRAVITY************************
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (isGrounded && velocity.y < 0)
+        if (controller.isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && controller.isGrounded)
         {
             velocity.y = jumpHeight;
         }
