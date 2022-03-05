@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
     [Header("Control")]
-    //public CharacterController controller;
     Rigidbody _rb;
-    private Collider _col = null;
+    BoxCollider _col;
+    StackObject _stack;
+    public GameObject _stackHolder;
 
     public float speed = 6;
     public float gravity = -9.81f;
@@ -29,7 +29,8 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        _col = GetComponent<Collider>();
+        _col = GetComponent<BoxCollider>();
+        _stack = GetComponentInChildren<StackObject>();
 
         groundMask = LayerMask.NameToLayer("Ground");
 
@@ -53,6 +54,10 @@ public class Movement : MonoBehaviour
             aimCamera.SetActive(false);
             theCursor.SetActive(false);
         }
+
+        if (Input.GetKeyDown(KeyCode.P)) Grow();
+
+        if (Input.GetKeyDown(KeyCode.Q) && _stack.pogCount > 1) Shrink();
     }
 
     private void LateUpdate()
@@ -87,6 +92,18 @@ public class Movement : MonoBehaviour
         {
             _rb.AddForce(Vector3.up * _jumpForce * Time.deltaTime, ForceMode.Impulse);
         }
+    }
+
+    private void Grow()
+    {
+        _col.center += Vector3.down * 0.05f;
+        _col.size = new Vector3(1, 0.1f * _stack.pogCount, 1);
+    }
+
+    private void Shrink()
+    {
+        _col.center += Vector3.down * 0.05f;
+        _col.size = new Vector3(1, 0.1f * _stack.pogCount, 1);
     }
 
     private bool IsGrounded()

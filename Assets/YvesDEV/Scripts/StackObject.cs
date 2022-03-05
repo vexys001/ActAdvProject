@@ -10,7 +10,7 @@ public class StackObject : MonoBehaviour
     // https://docs.unity3d.com/ScriptReference/Experimental.GraphView.StackNode.html
 
     public GameObject samplePog;
-    int pogCount;
+    public int pogCount;
     GameObject firstPogGO, lastPogGO;
 
     // Start is called before the first frame update
