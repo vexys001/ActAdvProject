@@ -26,6 +26,7 @@ public class BasicMovement3 : MonoBehaviour
     public GameObject thirdPersonCameraThingy;
     public GameObject aimCameraThingy;
     public GameObject theCursor;
+    public GameObject thePlayerGFX;
 
     private void Start()
     {
@@ -76,6 +77,7 @@ public class BasicMovement3 : MonoBehaviour
             thirdPersonCameraThingy.SetActive(false);
             aimCameraThingy.SetActive(true);
             theCursor.SetActive(true);
+            thePlayerGFX.transform.rotation = cam.transform.rotation;
             if (((Input.GetButtonDown("Fire1") || Mathf.Round(Input.GetAxisRaw("Fire1")) > 0)) && isShooting == false)
             {
                 isShooting = true;
@@ -87,6 +89,7 @@ public class BasicMovement3 : MonoBehaviour
             thirdPersonCameraThingy.SetActive(true);
             aimCameraThingy.SetActive(false);
             theCursor.SetActive(false);
+            thePlayerGFX.transform.rotation = controller.transform.rotation;
         }
         if (((Input.GetButtonDown("Fire1") || Mathf.Round(Input.GetAxisRaw("Fire1")) > 0)) && isShooting == false)
         {
