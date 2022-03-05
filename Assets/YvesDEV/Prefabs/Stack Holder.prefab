@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7473759360901848524}
   - component: {fileID: 7473759360901848531}
-  - component: {fileID: 7473759360901848530}
   m_Layer: 0
   m_Name: Stack Holder
   m_TagString: Untagged
@@ -47,24 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   samplePog: {fileID: 4707183598703341360, guid: 2f99a7cadb839c043b2a9508d73f3db4, type: 3}
---- !u!143 &7473759360901848530
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7473759360901848525}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 0
-  m_Radius: 0.58
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2804447350071595334
 PrefabInstance:
   m_ObjectHideFlags: 0

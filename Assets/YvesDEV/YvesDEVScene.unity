@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 587416437}
   - component: {fileID: 587416436}
   - component: {fileID: 587416435}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,6 +321,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2429446926988888145, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000020569926
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429446926988888145, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000005106984
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875806347307719134, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000037460428
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875806347307719134, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000019828553
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875806347595405361, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.00000003639873
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875806347595405361, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000018429017
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875806349023644707, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000020660577
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875806349023644707, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000011420413
+      objectReference: {fileID: 0}
     - target: {fileID: 4096941301845060453, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
       propertyPath: m_Name
       value: PlayerAndCam
@@ -339,7 +371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7338585406552213579, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.34000015
+      value: 18.72
       objectReference: {fileID: 0}
     - target: {fileID: 7338585406552213579, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
       propertyPath: m_LocalPosition.z

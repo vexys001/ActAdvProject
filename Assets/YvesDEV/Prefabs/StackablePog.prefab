@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eda7465fe8de6048b56cdb6c48fec4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextPog: {fileID: 0}
+  stack: {fileID: 0}
   Speed: 10
   Lifespan: 3
 --- !u!1 &4707183599769566290
@@ -134,10 +136,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PogPlaceHolder
       objectReference: {fileID: 0}
-    - target: {fileID: 8488931473903925487, guid: 8e04d832bbe7f7746a2439054466e234, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4c80bca67fca05341b8011001a90cc93, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e04d832bbe7f7746a2439054466e234, type: 3}
 --- !u!4 &4707183599525855249 stripped
