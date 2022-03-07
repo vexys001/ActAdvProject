@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b02626a5c182e428560f552f8e5de6, type: 3}
   m_Name: PogKey
   m_EditorClassIdentifier: 
-  IsKey: 0
+  IsKey: 1
   Material: {fileID: 2100000, guid: f95fa21e840f1d940951b9c3d6d36aae, type: 2}
