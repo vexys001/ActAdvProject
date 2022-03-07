@@ -42,8 +42,42 @@ public class Pog : MonoBehaviour
 
     void RunStates()
     {
-        if (_currentState.Equals("isShooting")) Shoot();
-        if (_currentState.Equals("isShielding")) Shield();
+        if (_currentState == "none") StartIdle();
+
+        if (_currentState.Equals("Idle")) Idle();
+        else if (_currentState.Equals("Dropped")) Idle();
+        else if (_currentState.Equals("isShooting")) Shoot();
+        else if (_currentState.Equals("isShielding")) Shield();
+    }
+
+    void StartIdle()
+    {
+        _currentState = "Idle";
+    }
+
+    void Idle()
+    {
+
+    }
+
+    void StopIdle()
+    {
+        _currentState = "none";
+    }
+
+    void StartDropped()
+    {
+        _currentState = "Dropped";
+    }
+
+    void Dropped()
+    {
+
+    }
+
+    void StopDropped()
+    {
+        _currentState = "none";
     }
 
     void StartShoot()
@@ -82,6 +116,5 @@ public class Pog : MonoBehaviour
         stack.GetComponent<StackObject>().AddPog(gameObject);
         transform.localPosition = Vector3.zero;
         _currentState = "none";
-        //Destroy(gameObject);
     }
 }
