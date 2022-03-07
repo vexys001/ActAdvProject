@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour
         _col = GetComponent<BoxCollider>();
         _stack = GetComponentInChildren<StackObject>();
 
-        _topPogOffset = new Vector3(0,0.05f, 0);
+        _topPogOffset = new Vector3(0, 0.05f, 0);
 
         groundMask = LayerMask.NameToLayer("Ground");
 
@@ -58,6 +58,7 @@ public class Movement : MonoBehaviour
             theCursor.SetActive(false);
         }
 
+        // TODO: Remove those
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.O)) ChangeCollider(false);
 
         if (_stack.pogCount > 1)
@@ -78,6 +79,8 @@ public class Movement : MonoBehaviour
         }
 
         if (_stack.pogCount > 5 && Input.GetKeyDown(KeyCode.T)) Invoke("ChangeCollider", 1f);
+
+        //END OF TODO
     }
 
     private void LateUpdate()
@@ -117,8 +120,8 @@ public class Movement : MonoBehaviour
     private void ChangeCollider(bool removeFromMiddle)
     {
         //_col.center += Vector3.down * 0.05f;
-        if(!removeFromMiddle) _stack.transform.localPosition += _topPogOffset; 
-       else _stack.transform.localPosition -= _topPogOffset; 
+        if (!removeFromMiddle) _stack.transform.localPosition += _topPogOffset;
+        else _stack.transform.localPosition -= _topPogOffset;
 
         _col.size = new Vector3(1, 0.1f * _stack.pogCount, 1);
     }

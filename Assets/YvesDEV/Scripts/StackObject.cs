@@ -36,6 +36,7 @@ public class StackObject : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T) && pogCount > 5) RemoveXNonKeys(5);
     }
 
+    #region Adding to the stack
     void AddPog()
     {
         pogCount++;
@@ -60,6 +61,9 @@ public class StackObject : MonoBehaviour
         lastPogGO.transform.SetParent(temp);
     }
 
+    #endregion
+
+    #region Using pogs
     void ShootPog()
     {
         RemoveTopPog().SendMessage("StartShoot");
@@ -78,6 +82,9 @@ public class StackObject : MonoBehaviour
 
         objToDrop.SendMessage("StartDropped");
     }
+    #endregion
+
+    #region Removal from the stack
 
     GameObject RemoveTopPog()
     {
@@ -154,7 +161,7 @@ public class StackObject : MonoBehaviour
 
                     //Get the new Top pog
                     pogToRemove = firstPogGO;
-                    
+
                     gameObject.SendMessageUpwards("ChangeCollider", false);
                 }
                 else
@@ -170,7 +177,8 @@ public class StackObject : MonoBehaviour
                     gameObject.SendMessageUpwards("ChangeCollider", true);
                 }
             }
-            
+
         }
     }
+    #endregion
 }

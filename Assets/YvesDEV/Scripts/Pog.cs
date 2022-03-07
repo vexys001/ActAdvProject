@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pog : MonoBehaviour
 {
     string _currentState;
-    public GameObject itself, nextPog, stack;
+    public GameObject itself, stack;
 
     [Header("Shooting Vars")]
     public float Speed = 10f;
@@ -35,11 +35,6 @@ public class Pog : MonoBehaviour
         RunStates();
     }
 
-    public void AssignNextPog(GameObject pNextPog)
-    {
-        nextPog = pNextPog;
-    }
-
     void RunStates()
     {
         if (_currentState == "none") StartIdle();
@@ -49,7 +44,7 @@ public class Pog : MonoBehaviour
         else if (_currentState.Equals("isShooting")) Shoot();
         else if (_currentState.Equals("isShielding")) Shield();
     }
-
+    #region Idle State
     void StartIdle()
     {
         _currentState = "Idle";
@@ -64,7 +59,9 @@ public class Pog : MonoBehaviour
     {
         _currentState = "none";
     }
+    #endregion
 
+    #region Dropped State
     void StartDropped()
     {
         transform.SetParent(null);
@@ -80,7 +77,9 @@ public class Pog : MonoBehaviour
     {
         _currentState = "none";
     }
+    #endregion
 
+    #region Shoot State
     void StartShoot()
     {
         transform.SetParent(null);
@@ -97,7 +96,9 @@ public class Pog : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+    #endregion
 
+    #region Shield State
     void StartShield(GameObject pStack)
     {
         stack = pStack;
@@ -118,4 +119,5 @@ public class Pog : MonoBehaviour
         transform.localPosition = Vector3.zero;
         _currentState = "none";
     }
+    #endregion
 }
