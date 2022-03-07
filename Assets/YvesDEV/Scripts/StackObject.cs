@@ -12,7 +12,10 @@ public class StackObject : MonoBehaviour
     public GameObject samplePog;
     public PogScriptableObject[] PogDatas;
     public int pogCount;
-    GameObject firstPogGO, lastPogGO;
+    public GameObject firstPogGO, lastPogGO;
+
+    [Header("Removal Specific")]
+    public int ncountrdNonRemovblPogs;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +32,8 @@ public class StackObject : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O)) AddKeyPog();
         if (Input.GetKeyDown(KeyCode.Q) && pogCount > 1) ShootPog();
         if (Input.GetKeyDown(KeyCode.E) && pogCount > 1) ShieldPog();
-        if (Input.GetKeyDown(KeyCode.Y) && pogCount > 1) DropPog();
+        if (Input.GetKeyDown(KeyCode.Y) && pogCount > 1) DropPog(true);
+        if (Input.GetKeyDown(KeyCode.T) && pogCount > 5) RemoveXNonKeys(5);
     }
 
     void AddPog()
@@ -41,7 +45,6 @@ public class StackObject : MonoBehaviour
 
     void AddKeyPog()
     {
-        Debug.Log("Spawning Key");
         pogCount++;
         lastPogGO = Instantiate(samplePog, lastPogGO.transform.GetChild(0));
         lastPogGO.GetComponent<Pog>().SetScriptable(PogDatas[1]);
@@ -49,7 +52,6 @@ public class StackObject : MonoBehaviour
 
     public void AddPog(GameObject pPog)
     {
-        Debug.Log("Adde existing pog");
         pogCount++;
 
         Transform temp = lastPogGO.transform.GetChild(0);
@@ -68,11 +70,9 @@ public class StackObject : MonoBehaviour
         RemoveTopPog().SendMessage("StartShield", gameObject);
     }
 
-    void DropPog()
+    void DropPog(bool RemoveFrmTop)
     {
-        Debug.Log("Dropped Pog");
-
-        GameObject objToDrop = RemoveTopPog();
+        GameObject objToDrop = RemoveFrmTop ? RemoveTopPog() : RemoveMiddlePog();
 
         objToDrop.transform.position = transform.position + new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
 
@@ -84,39 +84,93 @@ public class StackObject : MonoBehaviour
         pogCount--;
 
         //Save first Pog gameobject temporarly
-        GameObject temp = firstPogGO;
+        GameObject toRemove = firstPogGO;
 
         // Replace the first pog with the next Pog gameobject
         firstPogGO = firstPogGO.transform.GetChild(0).GetChild(0).gameObject;
 
-        //Unparent the the stack for the top
-        temp.transform.GetChild(0).DetachChildren();
+        //Unparent the bottom the stack from the top
+        toRemove.transform.GetChild(0).DetachChildren();
 
         //Parent back the stack to the holder
         firstPogGO.transform.SetParent(transform);
 
-        return temp;
+        return toRemove;
     }
 
     GameObject RemoveMiddlePog()
     {
-        return null;
+        pogCount--;
+
+        GameObject toRemove = firstPogGO, previous = null, next;
+
+        for (int i = 0; i < ncountrdNonRemovblPogs; i++)
+        {
+            previous = toRemove;
+            toRemove = toRemove.transform.GetChild(0).GetChild(0).gameObject;
+        }
+
+        next = toRemove.transform.GetChild(0).GetChild(0).gameObject;
+
+        //Unparent the bottom of the stack
+        toRemove.transform.GetChild(0).DetachChildren();
+
+        //Parent back the bottom of the stack to the top
+        next.transform.SetParent(previous.transform.GetChild(0));
+        next.transform.localPosition = Vector3.zero;
+
+        return toRemove;
     }
 
     void RemoveXNonKeys(int x)
     {
-        bool encounteredKey = false;
+        ncountrdNonRemovblPogs = 0;
 
-        for(int i = 0; i < x; i++)
+        //Get the First pog
+        GameObject pogToRemove = firstPogGO;
+
+        for (int i = 0; i < x;)
         {
-            if (encounteredKey)
+            //If the pog is a key
+            if (pogToRemove.GetComponent<Pog>().IsKey)
             {
+                //Count the number of keys encountered
+                ncountrdNonRemovblPogs++;
 
+                //Get the next pog to remove
+                pogToRemove = pogToRemove.transform.GetChild(0).GetChild(0).gameObject;
             }
             else
             {
+                //IF IT WASNT A KEY
+                Debug.Log(pogToRemove.name + " pog is not a key");
+                i++;
 
+                // If youve seen no keys yet
+                if (ncountrdNonRemovblPogs == 0)
+                {
+                    //Drop the top pog
+                    DropPog(true);
+
+                    //Get the new Top pog
+                    pogToRemove = firstPogGO;
+                    
+                    gameObject.SendMessageUpwards("ChangeCollider", false);
+                }
+                else
+                {
+                    //Get the next pog to remove
+                    var nextPog = pogToRemove.transform.GetChild(0).GetChild(0).gameObject;
+
+                    //Drop Middle Pog
+                    DropPog(false);
+
+                    //Pog to remove becomes the next one
+                    pogToRemove = nextPog;
+                    gameObject.SendMessageUpwards("ChangeCollider", true);
+                }
             }
+            
         }
     }
 }

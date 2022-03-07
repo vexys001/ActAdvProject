@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     BoxCollider _col;
     StackObject _stack;
     public GameObject _stackHolder;
+    private Vector3 _topPogOffset;
 
     public float speed = 6;
     public float gravity = -9.81f;
@@ -31,6 +32,8 @@ public class Movement : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _col = GetComponent<BoxCollider>();
         _stack = GetComponentInChildren<StackObject>();
+
+        _topPogOffset = new Vector3(0,0.05f, 0);
 
         groundMask = LayerMask.NameToLayer("Ground");
 
@@ -55,24 +58,26 @@ public class Movement : MonoBehaviour
             theCursor.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.O)) ChangeCollider();
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.O)) ChangeCollider(false);
 
         if (_stack.pogCount > 1)
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                ChangeCollider();
+                ChangeCollider(false);
             }
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                ChangeCollider();
+                ChangeCollider(false);
                 Invoke("ChangeCollider", Pog.ShieldDuration);
             }
 
-            if (Input.GetKeyDown(KeyCode.Y)) ChangeCollider();
+            if (Input.GetKeyDown(KeyCode.Y)) ChangeCollider(false);
 
         }
+
+        if (_stack.pogCount > 5 && Input.GetKeyDown(KeyCode.T)) Invoke("ChangeCollider", 1f);
     }
 
     private void LateUpdate()
@@ -109,9 +114,11 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void ChangeCollider()
+    private void ChangeCollider(bool removeFromMiddle)
     {
-        _col.center += Vector3.down * 0.05f;
+        //_col.center += Vector3.down * 0.05f;
+        if(!removeFromMiddle) _stack.transform.localPosition += _topPogOffset; 
+       else _stack.transform.localPosition -= _topPogOffset; 
 
         _col.size = new Vector3(1, 0.1f * _stack.pogCount, 1);
     }
