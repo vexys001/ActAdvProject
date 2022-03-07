@@ -4,17 +4,29 @@ using UnityEngine;
 
 public class Pog : MonoBehaviour
 {
-    string currentState;
-    public GameObject nextPog, stack;
+    string _currentState;
+    public GameObject itself, nextPog, stack;
 
     [Header("Shooting Vars")]
     public float Speed = 10f;
     public float Lifespan = 3f;
+    public static float ShieldDuration = 5f;
+
+    [Header("Info Vars")]
+    PogScriptableObject PogSO;
+    public bool IsKey;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentState = "none";
+        _currentState = "none";
+    }
+
+    public void SetScriptable(PogScriptableObject SO)
+    {
+        PogSO = SO;
+        IsKey = PogSO.IsKey;
+        itself.GetComponent<MeshRenderer>().material = PogSO.Material;
     }
 
     // Update is called once per frame
@@ -30,14 +42,14 @@ public class Pog : MonoBehaviour
 
     void RunStates()
     {
-        if (currentState.Equals("isShooting")) Shoot();
-        if (currentState.Equals("isShielding")) Shield();
+        if (_currentState.Equals("isShooting")) Shoot();
+        if (_currentState.Equals("isShielding")) Shield();
     }
 
     void StartShoot()
     {
         transform.SetParent(null);
-        currentState = "isShooting";
+        _currentState = "isShooting";
     }
 
     void Shoot()
@@ -55,9 +67,9 @@ public class Pog : MonoBehaviour
     {
         stack = pStack;
         transform.SetParent(null);
-        currentState = "isShielding";
+        _currentState = "isShielding";
         transform.position += Vector3.forward;
-        Invoke("EndShield", 5f);
+        Invoke("EndShield", ShieldDuration);
     }
 
     void Shield()
@@ -67,7 +79,9 @@ public class Pog : MonoBehaviour
 
     void EndShield()
     {
-        stack.SendMessage("AddPog", gameObject);
-        Destroy(gameObject);
+        stack.GetComponent<StackObject>().AddPog(gameObject);
+        transform.localPosition = Vector3.zero;
+        _currentState = "none";
+        //Destroy(gameObject);
     }
 }

@@ -10,6 +10,7 @@ public class StackObject : MonoBehaviour
     // https://docs.unity3d.com/ScriptReference/Experimental.GraphView.StackNode.html
 
     public GameObject samplePog;
+    public PogScriptableObject[] PogDatas;
     public int pogCount;
     GameObject firstPogGO, lastPogGO;
 
@@ -25,6 +26,7 @@ public class StackObject : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P)) AddPog();
+        if (Input.GetKeyDown(KeyCode.O)) AddKeyPog();
         if (Input.GetKeyDown(KeyCode.Q) && pogCount > 1) ShootPog();
         if (Input.GetKeyDown(KeyCode.E) && pogCount > 1) ShieldPog();
     }
@@ -33,13 +35,25 @@ public class StackObject : MonoBehaviour
     {
         pogCount++;
         lastPogGO = Instantiate(samplePog, lastPogGO.transform.GetChild(0));
+        lastPogGO.GetComponent<Pog>().SetScriptable(PogDatas[0]);
     }
 
-    void AddPog(GameObject pPog)
+    void AddKeyPog()
     {
+        Debug.Log("Spawning Key");
         pogCount++;
-        var temp = lastPogGO.transform.GetChild(0);
+        lastPogGO = Instantiate(samplePog, lastPogGO.transform.GetChild(0));
+        lastPogGO.GetComponent<Pog>().SetScriptable(PogDatas[1]);
+    }
+
+    public void AddPog(GameObject pPog)
+    {
+        Debug.Log("Adde existing pog");
+        pogCount++;
+
+        Transform temp = lastPogGO.transform.GetChild(0);
         lastPogGO = pPog;
+
         lastPogGO.transform.SetParent(temp);
     }
 

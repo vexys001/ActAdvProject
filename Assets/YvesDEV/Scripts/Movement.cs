@@ -55,9 +55,22 @@ public class Movement : MonoBehaviour
             theCursor.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.P)) Grow();
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.O)) ChangeCollider();
 
-        if (Input.GetKeyDown(KeyCode.Q) && _stack.pogCount > 1) Shrink();
+        if (_stack.pogCount > 1)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                ChangeCollider();
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ChangeCollider();
+                Invoke("ChangeCollider", Pog.ShieldDuration);
+            }
+
+        }
     }
 
     private void LateUpdate()
@@ -94,15 +107,10 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void Grow()
+    private void ChangeCollider()
     {
         _col.center += Vector3.down * 0.05f;
-        _col.size = new Vector3(1, 0.1f * _stack.pogCount, 1);
-    }
 
-    private void Shrink()
-    {
-        _col.center += Vector3.down * 0.05f;
         _col.size = new Vector3(1, 0.1f * _stack.pogCount, 1);
     }
 
