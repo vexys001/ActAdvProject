@@ -29,6 +29,7 @@ public class StackObject : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O)) AddKeyPog();
         if (Input.GetKeyDown(KeyCode.Q) && pogCount > 1) ShootPog();
         if (Input.GetKeyDown(KeyCode.E) && pogCount > 1) ShieldPog();
+        if (Input.GetKeyDown(KeyCode.Y) && pogCount > 1) DropPog();
     }
 
     void AddPog()
@@ -59,31 +60,31 @@ public class StackObject : MonoBehaviour
 
     void ShootPog()
     {
-        pogCount--;
-
-        //Save first Pog gameobject temporarly
-        var temp = firstPogGO;
-
-        // Replace the first pog with the next Pog gameobject
-        firstPogGO = firstPogGO.transform.GetChild(0).GetChild(0).gameObject;
-
-        //Unparent the the stack for the top
-        temp.transform.GetChild(0).DetachChildren();
-
-        //Parent back the stack to the holder
-        firstPogGO.transform.SetParent(transform);
-
-        //Destroy TEMP
-        //Destroy(temp);
-        temp.SendMessage("StartShoot");
+        RemoveTopPog().SendMessage("StartShoot");
     }
 
     void ShieldPog()
     {
+        RemoveTopPog().SendMessage("StartShield", gameObject);
+    }
+
+    void DropPog()
+    {
+        Debug.Log("Dropped Pog");
+
+        GameObject objToDrop = RemoveTopPog();
+
+        objToDrop.transform.position = transform.position + new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
+
+        objToDrop.SendMessage("StartDropped");
+    }
+
+    GameObject RemoveTopPog()
+    {
         pogCount--;
 
         //Save first Pog gameobject temporarly
-        var temp = firstPogGO;
+        GameObject temp = firstPogGO;
 
         // Replace the first pog with the next Pog gameobject
         firstPogGO = firstPogGO.transform.GetChild(0).GetChild(0).gameObject;
@@ -94,8 +95,28 @@ public class StackObject : MonoBehaviour
         //Parent back the stack to the holder
         firstPogGO.transform.SetParent(transform);
 
-        //Destroy TEMP
-        //Destroy(temp);
-        temp.SendMessage("StartShield", gameObject);
+        return temp;
+    }
+
+    GameObject RemoveMiddlePog()
+    {
+        return null;
+    }
+
+    void RemoveXNonKeys(int x)
+    {
+        bool encounteredKey = false;
+
+        for(int i = 0; i < x; i++)
+        {
+            if (encounteredKey)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
     }
 }

@@ -70,6 +70,8 @@ public class Movement : MonoBehaviour
                 Invoke("ChangeCollider", Pog.ShieldDuration);
             }
 
+            if (Input.GetKeyDown(KeyCode.Y)) ChangeCollider();
+
         }
     }
 

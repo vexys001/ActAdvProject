@@ -67,6 +67,7 @@ public class Pog : MonoBehaviour
 
     void StartDropped()
     {
+        transform.SetParent(null);
         _currentState = "Dropped";
     }
 
