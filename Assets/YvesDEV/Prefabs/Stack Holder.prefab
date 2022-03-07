@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   samplePog: {fileID: 4707183598703341360, guid: 2f99a7cadb839c043b2a9508d73f3db4, type: 3}
+  PogDatas:
+  - {fileID: 11400000, guid: cc177b227c8b7bf4fa46a41cda5df8be, type: 2}
+  - {fileID: 11400000, guid: 40b90cdb6ee675749b5d8fa27f8b7ca2, type: 2}
+  pogCount: 0
 --- !u!1001 &2804447350071595334
 PrefabInstance:
   m_ObjectHideFlags: 0
