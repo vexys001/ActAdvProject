@@ -71,7 +71,6 @@ public class Movement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 ChangeCollider(false);
-                Invoke("ChangeCollider", Pog.ShieldDuration);
             }
 
             if (Input.GetKeyDown(KeyCode.Y)) ChangeCollider(false);

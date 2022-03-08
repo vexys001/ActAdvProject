@@ -116,6 +116,8 @@ public class Pog : MonoBehaviour
     void EndShield()
     {
         stack.GetComponent<StackObject>().AddPog(gameObject);
+        gameObject.SendMessageUpwards("ChangeCollider",false);
+
         transform.localPosition = Vector3.zero;
         _currentState = "none";
     }
