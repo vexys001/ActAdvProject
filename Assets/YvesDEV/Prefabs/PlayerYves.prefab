@@ -441,10 +441,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stackHolder: {fileID: 0}
-  speed: 6
+  _acceleration: 6
+  _maxSpeed: 6
   gravity: -9.81
   _jumpForce: 3
   velocity: {x: 0, y: 0, z: 0}
+  bottomGO: {fileID: 7721166819259646047}
   groundMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -1000,5 +1002,10 @@ PrefabInstance:
 --- !u!4 &7721166819163333605 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7473759360901848524, guid: 1dec607191f00404391e81dcce812619, type: 3}
+  m_PrefabInstance: {fileID: 909508161936653865}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7721166819259646047 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7473759360998211190, guid: 1dec607191f00404391e81dcce812619, type: 3}
   m_PrefabInstance: {fileID: 909508161936653865}
   m_PrefabAsset: {fileID: 0}

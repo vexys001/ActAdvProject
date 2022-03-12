@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour
     public float _jumpForce = 3;
     public Vector3 velocity;
 
+    [SerializeField]
     private GameObject bottomGO = null;
     public LayerMask groundMask;
 
@@ -85,11 +86,6 @@ public class Movement : MonoBehaviour
 
         if (_stack.pogCount > 5 && Input.GetKeyDown(KeyCode.T)) Invoke("ChangeCollider", 1f);
 
-        //END OF TODO
-    }
-
-    private void LateUpdate()
-    {
         if (IsGrounded().Length >= 1)
         {
             Debug.Log("Grounded");
@@ -97,6 +93,13 @@ public class Movement : MonoBehaviour
             Jump();
         }
         else Debug.Log("Not Grounded");
+
+        //END OF TODO
+    }
+
+    private void LateUpdate()
+    {
+        
     }
 
     private void Move()
