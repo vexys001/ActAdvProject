@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7473759360901848524}
-  - component: {fileID: 7473759360901848531}
   - component: {fileID: 8566863187689696175}
+  - component: {fileID: 7473759360901848531}
   m_Layer: 0
   m_Name: Stack Holder
   m_TagString: Untagged
@@ -34,26 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7473759360901848531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7473759360901848525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5928b629cee513544a3fe743b1f3c58f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  samplePog: {fileID: 4707183598703341360, guid: 2f99a7cadb839c043b2a9508d73f3db4, type: 3}
-  PogDatas:
-  - {fileID: 11400000, guid: cc177b227c8b7bf4fa46a41cda5df8be, type: 2}
-  - {fileID: 11400000, guid: 40b90cdb6ee675749b5d8fa27f8b7ca2, type: 2}
-  pogCount: 0
-  firstPogGO: {fileID: 0}
-  lastPogGO: {fileID: 0}
-  ncountrdNonRemovblPogs: 0
 --- !u!95 &8566863187689696175
 Animator:
   serializedVersion: 4
@@ -74,6 +54,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7473759360901848531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7473759360901848525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5928b629cee513544a3fe743b1f3c58f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  samplePog: {fileID: 4707183598703341360, guid: 2f99a7cadb839c043b2a9508d73f3db4, type: 3}
+  PogDatas:
+  - {fileID: 11400000, guid: cc177b227c8b7bf4fa46a41cda5df8be, type: 2}
+  - {fileID: 11400000, guid: 40b90cdb6ee675749b5d8fa27f8b7ca2, type: 2}
+  pogCount: 0
+  firstPogGO: {fileID: 0}
+  lastPogGO: {fileID: 0}
+  ncountrdNonRemovblPogs: 0
 --- !u!1001 &2804447350071595334
 PrefabInstance:
   m_ObjectHideFlags: 0
