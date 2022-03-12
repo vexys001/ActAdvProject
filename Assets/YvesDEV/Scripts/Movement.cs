@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour
     public float _jumpForce = 3;
     public Vector3 velocity;
 
+    private GameObject bottomGO = null;
     public LayerMask groundMask;
 
     private float turnSmoothVelocity;
@@ -35,6 +36,8 @@ public class Movement : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _col = GetComponent<BoxCollider>();
         _stack = GetComponentInChildren<StackObject>();
+
+        bottomGO = _stack.lastPogGO;
 
         _topPogOffset = new Vector3(0, 0.05f, 0);
 
@@ -87,11 +90,13 @@ public class Movement : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (IsGrounded())
+        if (IsGrounded().Length >= 1)
         {
+            Debug.Log("Grounded");
             Move();
             Jump();
         }
+        else Debug.Log("Not Grounded");
     }
 
     private void Move()
@@ -113,7 +118,7 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        if (IsGrounded() && Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             _rb.AddForce(Vector3.up * _jumpForce * Time.deltaTime, ForceMode.Impulse);
         }
@@ -126,10 +131,16 @@ public class Movement : MonoBehaviour
         else _stack.transform.localPosition -= _topPogOffset;
 
         _col.size = new Vector3(1, 0.1f * _stack.pogCount, 1);
+        bottomGO = _stack.lastPogGO;
     }
 
-    private bool IsGrounded()
+    private RaycastHit[] IsGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, groundMask);
+        return Physics.RaycastAll(bottomGO.transform.position, Vector3.down, groundMask);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Debug.DrawRay(bottomGO.transform.position, Vector3.down, Color.red, 50f, false);
     }
 }
