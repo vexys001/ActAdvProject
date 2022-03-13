@@ -5,7 +5,8 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     public Transform StartPoint, EndPoint;
-    float _platSpeed = 3;
+    [SerializeField]
+    private float _platSpeed = 3;
 
     Transform _objective;
 
