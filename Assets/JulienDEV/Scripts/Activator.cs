@@ -59,7 +59,7 @@ public class Activator : MonoBehaviour
         switch (_Modes)
         {
             case _modes.button:
-                _objectRenderer.material.color = _objectColor;
+                //
                 break;
 
             case _modes.buttonOneShot:
@@ -76,7 +76,6 @@ public class Activator : MonoBehaviour
                     OnOff();
                     _isPressurePlatePressed = true;
                 }
-                _objectRenderer.material.color = _pressedObjectColor;
                 break;
         }
     }
@@ -86,7 +85,7 @@ public class Activator : MonoBehaviour
         switch (_Modes)
         {
             case _modes.button:
-                _objectRenderer.material.color = _objectColor;
+                //
                 break;
 
             case _modes.buttonOneShot:
@@ -100,7 +99,6 @@ public class Activator : MonoBehaviour
             case _modes.pressurePlate:
                 OnOff();
                 _isPressurePlatePressed = false;
-                _objectRenderer.material.color = _objectColor;
                 break;
         }
     }
@@ -116,9 +114,16 @@ public class Activator : MonoBehaviour
             _target.SetActive(true);
         }
 
-        _objectRenderer.material.color = _pressedObjectColor;
+        if (_objectRenderer.material.color == _pressedObjectColor)
+        {
+            _objectRenderer.material.color = _objectColor;
+        }
+        else if (_objectRenderer.material.color == _objectColor)
+        {
+            _objectRenderer.material.color = _pressedObjectColor;
+        }
 
-        Debug.Log("Pressed something!");
+        //Debug.Log("Pressed something!");
     }
 
     void PlayAnimation()
