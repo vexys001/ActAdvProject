@@ -84,7 +84,7 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            _stackHolder.SendMessage("AddPog");
+            _stackHolder.SendMessage("TempAddPog");
             ChangeCollider(false);
         }
         if (Input.GetKeyDown(KeyCode.O))
@@ -169,14 +169,21 @@ public class Movement : MonoBehaviour
     {
         if (other.CompareTag("HeightChecker"))
         {
-            Debug.Log("Touching HeightChecker");
             int maxHeight = other.GetComponent<HeightChecker>().MaxHeight;
             if(_stack.pogCount > maxHeight)
             {
                 int toRemove = _stack.pogCount - maxHeight;
-                Debug.Log($"Too Many Pogs!!!! {_stack.pogCount} over {maxHeight}");
                 _stackHolder.SendMessage("RemoveXNonKeys", toRemove);
             }   
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Pog"))
+        {
+            Debug.Log("Colliding with a pog");
+            _stackHolder.SendMessage("AddPog", collision.transform.parent.gameObject);
         }
     }
 

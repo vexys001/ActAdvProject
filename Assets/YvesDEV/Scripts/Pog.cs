@@ -49,6 +49,12 @@ public class Pog : MonoBehaviour
         _rb.constraints = RigidbodyConstraints.None;
         _rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
+
+    void DisableGravity()
+    {
+        _rb.useGravity = false;
+        _rb.constraints = RigidbodyConstraints.FreezeAll;
+    }
     #endregion
 
     void RunStates()
@@ -94,6 +100,10 @@ public class Pog : MonoBehaviour
     void StopDropped()
     {
         _currentState = "none";
+        _collider.enabled = false;
+        itself.transform.localPosition = Vector3.zero;
+
+        DisableGravity();
     }
     #endregion
 

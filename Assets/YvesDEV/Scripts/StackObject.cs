@@ -23,7 +23,7 @@ public class StackObject : MonoBehaviour
     }
 
     #region Adding to the stack
-    void AddPog()
+    void TempAddPog()
     {
         pogCount++;
         lastPogGO = Instantiate(samplePog, lastPogGO.transform.GetChild(0));
@@ -46,8 +46,11 @@ public class StackObject : MonoBehaviour
         lastPogGO = pPog;
 
         lastPogGO.transform.SetParent(temp);
-        lastPogGO.transform.localRotation = temp.localRotation;
         gameObject.SendMessageUpwards("ChangeCollider", false);
+        lastPogGO.SendMessage("StopDropped");
+
+        lastPogGO.transform.localRotation = temp.localRotation;
+        lastPogGO.transform.localPosition = Vector3.zero;
     }
 
     #endregion
