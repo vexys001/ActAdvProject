@@ -179,7 +179,7 @@ public class StackObject : MonoBehaviour
                 }
                 else
                 {
-                    if (pogToRemove.transform.GetChild(0).childCount < 0)
+                    if (pogToRemove.transform.GetChild(0).childCount > 0)
                     {
                         GameObject nextPog = pogToRemove.transform.GetChild(0).GetChild(0).gameObject;
                         //Drop Middle Pog
