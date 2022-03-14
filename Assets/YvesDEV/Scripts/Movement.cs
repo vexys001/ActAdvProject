@@ -32,6 +32,9 @@ public class Movement : MonoBehaviour
     public GameObject aimCamera;
     public GameObject theCursor;
 
+    [Header("Debugging")]
+    public bool DEBUG;
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -65,41 +68,61 @@ public class Movement : MonoBehaviour
             theCursor.SetActive(false);
         }
 
+        Inputs();
+
         // TODO: Remove those
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.O)) ChangeCollider(false);
-
-        if (_stack.pogCount > 1)
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                ChangeCollider(false);
-            }
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                ChangeCollider(false);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Y)) ChangeCollider(false);
-
-        }
-
-        if (_stack.pogCount > 5 && Input.GetKeyDown(KeyCode.T)) Invoke("ChangeCollider", 1f);
-
-        if (IsGrounded().Length >= 1)
-        {
-            Debug.Log("Grounded");
-            Move();
-            Jump();
-        }
-        else Debug.Log("Not Grounded");
 
         //END OF TODO
     }
 
     private void LateUpdate()
     {
-        
+
+    }
+
+    private void Inputs()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            _stackHolder.SendMessage("AddPog");
+            ChangeCollider(false);
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            _stackHolder.SendMessage("AddKeyPog");
+            ChangeCollider(false);
+        }
+        if (_stack.pogCount > 1)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                _stackHolder.SendMessage("ShootPog");
+                ChangeCollider(false);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                _stackHolder.SendMessage("ShieldPog");
+                ChangeCollider(false);
+            }
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                _stackHolder.SendMessage("DropPog", true);
+                ChangeCollider(false);
+            }
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.T) && _stack.pogCount > 5)
+        {
+            _stackHolder.SendMessage("RemoveXNonKeys", 5);
+        }
+
+        if (IsGrounded().Length >= 1)
+        {
+            Move();
+            Jump();
+        }
     }
 
     private void Move()
@@ -144,6 +167,9 @@ public class Movement : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Debug.DrawRay(bottomGO.transform.position, Vector3.down, Color.red, 50f, false);
+        if (DEBUG)
+        {
+            Debug.DrawRay(bottomGO.transform.position, Vector3.down, Color.red, 50f, false);
+        }
     }
 }

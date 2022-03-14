@@ -28,12 +28,7 @@ public class StackObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) AddPog();
-        if (Input.GetKeyDown(KeyCode.O)) AddKeyPog();
-        if (Input.GetKeyDown(KeyCode.Q) && pogCount > 1) ShootPog();
-        if (Input.GetKeyDown(KeyCode.E) && pogCount > 1) ShieldPog();
-        if (Input.GetKeyDown(KeyCode.Y) && pogCount > 1) DropPog(true);
-        if (Input.GetKeyDown(KeyCode.T) && pogCount > 5) RemoveXNonKeys(5);
+        
     }
 
     #region Adding to the stack
