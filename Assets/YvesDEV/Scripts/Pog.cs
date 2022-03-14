@@ -121,9 +121,10 @@ public class Pog : MonoBehaviour
     void StartShield(GameObject pStack)
     {
         stack = pStack;
-        transform.SetParent(null);
+        //Remove this maybe
+        //transform.SetParent(null);
         _currentState = "isShielding";
-        transform.position += Vector3.forward;
+        transform.position += Vector3.forward*2;
         Invoke("EndShield", ShieldDuration);
     }
 
