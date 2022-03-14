@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Pog : MonoBehaviour
 {
-    string _currentState;
+    [SerializeField]
+    private string _currentState;
+    [SerializeField]
+    private Collider _collider;
+    private Rigidbody _rb;
     public GameObject itself, stack;
 
     [Header("Shooting Vars")]
@@ -20,6 +24,9 @@ public class Pog : MonoBehaviour
     void Start()
     {
         _currentState = "none";
+
+        _collider = GetComponentInChildren<Collider>();
+        _rb = GetComponentInChildren<Rigidbody>();
     }
 
     public void SetScriptable(PogScriptableObject SO)
@@ -35,12 +42,21 @@ public class Pog : MonoBehaviour
         RunStates();
     }
 
+    #region Utility
+    void EnableGravity()
+    {
+        _rb.useGravity = true;
+        _rb.constraints = RigidbodyConstraints.None;
+        _rb.constraints = RigidbodyConstraints.FreezeRotation;
+    }
+    #endregion
+
     void RunStates()
     {
         if (_currentState == "none") StartIdle();
 
         if (_currentState.Equals("Idle")) Idle();
-        else if (_currentState.Equals("Dropped")) Idle();
+        else if (_currentState.Equals("Dropped")) Dropped();
         else if (_currentState.Equals("isShooting")) Shoot();
         else if (_currentState.Equals("isShielding")) Shield();
     }
@@ -66,11 +82,13 @@ public class Pog : MonoBehaviour
     {
         transform.SetParent(null);
         _currentState = "Dropped";
+
+        _collider.enabled = true;
+        EnableGravity();
     }
 
     void Dropped()
     {
-
     }
 
     void StopDropped()
