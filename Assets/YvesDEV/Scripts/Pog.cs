@@ -102,17 +102,17 @@ public class Pog : MonoBehaviour
     {
         transform.SetParent(null);
         _currentState = "isShooting";
+        Invoke("EndShoot", Lifespan);
     }
 
     void Shoot()
     {
         transform.position += transform.forward * Time.deltaTime * Speed;
-        Destroy(gameObject, Lifespan);
     }
 
     void EndShoot()
     {
-        Destroy(this.gameObject);
+        StartDropped();
     }
     #endregion
 
