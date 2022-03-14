@@ -107,7 +107,7 @@ public class Movement : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Y))
             {
-                _stackHolder.SendMessage("DropPog", true);
+                _stackHolder.SendMessage("DropPog", StackObject.Positions.Top);
                 ChangeCollider(false);
             }
 

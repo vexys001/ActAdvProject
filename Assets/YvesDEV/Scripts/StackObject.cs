@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class StackObject : MonoBehaviour
 {
-    // https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.stack-1?redirectedfrom=MSDN&view=net-6.0
-
-    // https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=net-6.0
-    // https://docs.unity3d.com/ScriptReference/Experimental.GraphView.StackNode.html
-
     public GameObject samplePog;
     public PogScriptableObject[] PogDatas;
     public int pogCount;
@@ -16,6 +11,8 @@ public class StackObject : MonoBehaviour
 
     [Header("Removal Specific")]
     public int ncountrdNonRemovblPogs;
+    public enum Positions { Top, Middle, Bottom }
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +20,6 @@ public class StackObject : MonoBehaviour
         firstPogGO = this.transform.GetChild(0).gameObject;
         lastPogGO = firstPogGO;
         pogCount = 1;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     #region Adding to the stack
@@ -51,11 +42,12 @@ public class StackObject : MonoBehaviour
         pogCount++;
 
         Transform temp = lastPogGO.transform.GetChild(0);
-        
+
         lastPogGO = pPog;
 
         lastPogGO.transform.SetParent(temp);
         lastPogGO.transform.localRotation = temp.localRotation;
+        gameObject.SendMessageUpwards("ChangeCollider", false);
     }
 
     #endregion
@@ -71,9 +63,24 @@ public class StackObject : MonoBehaviour
         RemoveTopPog().SendMessage("StartShield", gameObject);
     }
 
-    void DropPog(bool RemoveFrmTop)
+    void DropPog(Positions positionToRemove)
     {
-        GameObject objToDrop = RemoveFrmTop ? RemoveTopPog() : RemoveMiddlePog();
+        GameObject objToDrop = null;
+
+        switch (positionToRemove)
+        {
+            case Positions.Top:
+                objToDrop = RemoveTopPog();
+                break;
+            case Positions.Middle:
+                objToDrop = RemoveMiddlePog();
+                break;
+            case Positions.Bottom:
+                objToDrop = RemoveBottomPog();
+                break;
+            default:
+                break;
+        }
 
         objToDrop.transform.position = transform.position + new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
 
@@ -119,9 +126,20 @@ public class StackObject : MonoBehaviour
         //Unparent the bottom of the stack
         toRemove.transform.GetChild(0).DetachChildren();
 
-        //Parent back the bottom of the stack to the top
+        //Parent and place back the bottom of the stack
         next.transform.SetParent(previous.transform.GetChild(0));
         next.transform.localPosition = Vector3.zero;
+
+        return toRemove;
+    }
+
+    GameObject RemoveBottomPog()
+    {
+        pogCount--;
+
+        GameObject toRemove = lastPogGO;
+
+        lastPogGO = lastPogGO.transform.parent.parent.gameObject;
 
         return toRemove;
     }
@@ -133,7 +151,7 @@ public class StackObject : MonoBehaviour
         //Get the First pog
         GameObject pogToRemove = firstPogGO;
 
-        for (int i = 0; i < x;)
+        for (int i = 0; i < x && ncountrdNonRemovblPogs < pogCount;)
         {
             //If the pog is a key
             if (pogToRemove.GetComponent<Pog>().IsKey)
@@ -146,15 +164,13 @@ public class StackObject : MonoBehaviour
             }
             else
             {
-                //IF IT WASNT A KEY
-                Debug.Log(pogToRemove.name + " pog is not a key");
                 i++;
 
                 // If youve seen no keys yet
                 if (ncountrdNonRemovblPogs == 0)
                 {
                     //Drop the top pog
-                    DropPog(true);
+                    DropPog(Positions.Top);
 
                     //Get the new Top pog
                     pogToRemove = firstPogGO;
@@ -163,18 +179,23 @@ public class StackObject : MonoBehaviour
                 }
                 else
                 {
-                    //Get the next pog to remove
-                    var nextPog = pogToRemove.transform.GetChild(0).GetChild(0).gameObject;
+                    if (pogToRemove.transform.GetChild(0).childCount < 0)
+                    {
+                        GameObject nextPog = pogToRemove.transform.GetChild(0).GetChild(0).gameObject;
+                        //Drop Middle Pog
+                        DropPog(Positions.Middle);
 
-                    //Drop Middle Pog
-                    DropPog(false);
-
-                    //Pog to remove becomes the next one
-                    pogToRemove = nextPog;
-                    gameObject.SendMessageUpwards("ChangeCollider", true);
+                        //Pog to remove becomes the next one
+                        pogToRemove = nextPog;
+                        gameObject.SendMessageUpwards("ChangeCollider", true);
+                    }
+                    else
+                    {
+                        DropPog(Positions.Bottom);
+                        gameObject.SendMessageUpwards("ChangeCollider", true);
+                    }
                 }
             }
-
         }
     }
     #endregion
