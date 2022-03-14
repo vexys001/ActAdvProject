@@ -51,9 +51,11 @@ public class StackObject : MonoBehaviour
         pogCount++;
 
         Transform temp = lastPogGO.transform.GetChild(0);
+        
         lastPogGO = pPog;
 
         lastPogGO.transform.SetParent(temp);
+        lastPogGO.transform.localRotation = temp.localRotation;
     }
 
     #endregion

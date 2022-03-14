@@ -112,6 +112,7 @@ public class Pog : MonoBehaviour
 
     void EndShoot()
     {
+        _currentState = "none";
         StartDropped();
     }
     #endregion
