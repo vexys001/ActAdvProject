@@ -165,6 +165,21 @@ public class Movement : MonoBehaviour
         return Physics.RaycastAll(bottomGO.transform.position, Vector3.down, groundMask);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("HeightChecker"))
+        {
+            Debug.Log("Touching HeightChecker");
+            int maxHeight = other.GetComponent<HeightChecker>().MaxHeight;
+            if(_stack.pogCount > maxHeight)
+            {
+                int toRemove = _stack.pogCount - maxHeight;
+                Debug.Log($"Too Many Pogs!!!! {_stack.pogCount} over {maxHeight}");
+                _stackHolder.SendMessage("RemoveXNonKeys", toRemove);
+            }   
+        }
+    }
+
     private void OnDrawGizmos()
     {
         if (DEBUG)

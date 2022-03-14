@@ -144,7 +144,7 @@ public class StackObject : MonoBehaviour
         return toRemove;
     }
 
-    void RemoveXNonKeys(int x)
+    public void RemoveXNonKeys(int x)
     {
         ncountrdNonRemovblPogs = 0;
 
