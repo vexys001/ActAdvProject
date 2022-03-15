@@ -77,20 +77,25 @@ public class BasicMovement3 : MonoBehaviour
             thirdPersonCameraThingy.SetActive(false);
             aimCameraThingy.SetActive(true);
             theCursor.SetActive(true);
+
             thePlayerGFX.transform.rotation = cam.transform.rotation;
+
             if (((Input.GetButtonDown("Fire1") || Mathf.Round(Input.GetAxisRaw("Fire1")) > 0)) && isShooting == false)
             {
                 isShooting = true;
                 Instantiate(throwablePog, pogSpawnLoc2.transform.position, pogSpawnLoc2.transform.rotation);
                 StartCoroutine(shootingcooldown()); //I had to start a cooldown because it would spawn thousands of bullet when pressing the gamepad trigger lol
             }
+
         } else
         {
             thirdPersonCameraThingy.SetActive(true);
             aimCameraThingy.SetActive(false);
             theCursor.SetActive(false);
+
             thePlayerGFX.transform.rotation = controller.transform.rotation;
         }
+
         if (((Input.GetButtonDown("Fire1") || Mathf.Round(Input.GetAxisRaw("Fire1")) > 0)) && isShooting == false)
         {
           isShooting = true;

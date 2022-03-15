@@ -55,17 +55,26 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButtonDown("Fire2"))
         {
             thirdPersonCamera.SetActive(false);
             aimCamera.SetActive(true);
             theCursor.SetActive(true);
+
+            
         }
-        else
+        else if(Input.GetButtonUp("Fire2"))
         {
             thirdPersonCamera.SetActive(true);
             aimCamera.SetActive(false);
             theCursor.SetActive(false);
+
+            _stackHolder.transform.rotation = Quaternion.identity;
+        }
+
+        if (Input.GetButton("Fire2"))
+        {
+            _stackHolder.transform.rotation = cam.transform.rotation;
         }
 
         Inputs();
