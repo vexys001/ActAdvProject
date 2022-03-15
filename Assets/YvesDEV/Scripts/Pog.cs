@@ -151,6 +151,9 @@ public class Pog : MonoBehaviour
         //transform.SetParent(null);
         _currentState = "isShielding";
         transform.position += Vector3.forward * 2;
+
+        _collider.enabled = true;
+
         Invoke("EndShield", ShieldDuration);
     }
 
@@ -162,6 +165,8 @@ public class Pog : MonoBehaviour
     void EndShield()
     {
         stack.GetComponent<StackObject>().AddPog(gameObject);
+
+        _collider.enabled = false;
 
         transform.localPosition = Vector3.zero;
         _currentState = "none";
@@ -176,6 +181,11 @@ public class Pog : MonoBehaviour
             {
                 CancelInvoke("EndShoot");
                 EndShoot();
+            }
+            if (_currentState == "isShielding")
+            {
+                CancelInvoke("EndShield");
+                StartDropped();
             }
         }
     }
