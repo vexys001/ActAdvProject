@@ -50,6 +50,7 @@ public class StackObject : MonoBehaviour
         pogCount++;
         lastPogGO = Instantiate(samplePog, lastPogGO.transform.GetChild(0));
         lastPogGO.GetComponent<Pog>().SetScriptable(PogDatas[0]);
+        lastPogGO.GetComponent<Pog>().SetBelong(SystemEnums.Partys.Ally);
     }
 
     void AddKeyPog()
@@ -57,6 +58,7 @@ public class StackObject : MonoBehaviour
         pogCount++;
         lastPogGO = Instantiate(samplePog, lastPogGO.transform.GetChild(0));
         lastPogGO.GetComponent<Pog>().SetScriptable(PogDatas[1]);
+        lastPogGO.GetComponent<Pog>().SetBelong(SystemEnums.Partys.Ally);
     }
 
     public void AddPog(GameObject pPog)

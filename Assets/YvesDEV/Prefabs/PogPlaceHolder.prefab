@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8488931473903925487}
   - component: {fileID: 1215635461286569814}
   - component: {fileID: 6962222602293469742}
+  - component: {fileID: 8780675291288498897}
   m_Layer: 0
   m_Name: PogPlaceHolder
   m_TagString: Pog
@@ -115,3 +116,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &8780675291288498897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8488931473903925485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7daa10a8c1cdd14ba8409b4caf6a072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

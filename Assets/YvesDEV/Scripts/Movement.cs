@@ -202,6 +202,13 @@ public class Movement : MonoBehaviour
                 Debug.Log("Colliding with a dropped pog");
                 collidedPog.SetBelong(SystemEnums.Partys.Ally);
                 _stackHolder.SendMessage("AddPog", collision.transform.parent.gameObject);
+            }else if (collidedPog.GetState().Equals("isShooting") || collidedPog.GetState().Equals("isShielding"))
+            {
+                if(collidedPog.belongsTo == SystemEnums.Partys.Enemy)
+                {
+                    _stackHolder.SendMessage("DropPog", StackObject.Positions.Top);
+                    ChangeCollider(false);
+                }
             }
         }
     }

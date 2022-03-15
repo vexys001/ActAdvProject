@@ -444,7 +444,7 @@ MonoBehaviour:
   _acceleration: 6
   _maxSpeed: 6
   gravity: -9.81
-  _jumpForce: 3
+  _jumpForce: 60
   velocity: {x: 0, y: 0, z: 0}
   bottomGO: {fileID: 7721166819259646047}
   groundMask:

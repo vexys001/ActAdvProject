@@ -19,7 +19,7 @@ public class Pog : MonoBehaviour
     [Header("Info Vars")]
     PogScriptableObject PogSO;
     public bool IsKey;
-    
+
     public SystemEnums.Partys belongsTo;
 
     // Start is called before the first frame update
@@ -116,8 +116,6 @@ public class Pog : MonoBehaviour
         _collider.enabled = false;
         itself.transform.localPosition = Vector3.zero;
 
-        
-
         DisableGravity();
     }
     #endregion
@@ -127,6 +125,9 @@ public class Pog : MonoBehaviour
     {
         transform.SetParent(null);
         _currentState = "isShooting";
+
+        _collider.enabled = true;
+
         Invoke("EndShoot", Lifespan);
     }
 
@@ -149,7 +150,7 @@ public class Pog : MonoBehaviour
         //Remove this maybe
         //transform.SetParent(null);
         _currentState = "isShielding";
-        transform.position += Vector3.forward*2;
+        transform.position += Vector3.forward * 2;
         Invoke("EndShield", ShieldDuration);
     }
 
@@ -164,6 +165,19 @@ public class Pog : MonoBehaviour
 
         transform.localPosition = Vector3.zero;
         _currentState = "none";
+    }
+
+    private void CollisionDetected(Collision collision)
+    {
+        Debug.Log("Entered collision");
+        if (belongsTo == SystemEnums.Partys.Ally && !collision.gameObject.CompareTag("Player"))
+        {
+            if (_currentState == "isShooting")
+            {
+                CancelInvoke("EndShoot");
+                EndShoot();
+            }
+        }
     }
     #endregion
 }

@@ -46,12 +46,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eda7465fe8de6048b56cdb6c48fec4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentState: 
+  _collider: {fileID: 0}
   itself: {fileID: 4707183599525855253}
-  nextPog: {fileID: 0}
   stack: {fileID: 0}
   Speed: 10
   Lifespan: 3
-  isKey: 0
+  IsKey: 0
+  belongsTo: 0
 --- !u!1 &4707183599769566290
 GameObject:
   m_ObjectHideFlags: 0
