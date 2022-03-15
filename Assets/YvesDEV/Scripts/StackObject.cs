@@ -13,6 +13,9 @@ public class StackObject : MonoBehaviour
     public int ncountrdNonRemovblPogs;
     public enum Positions { Top, Middle, Bottom }
 
+    [Header("Animation")]
+    [SerializeField] private Animator _animator;
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +23,13 @@ public class StackObject : MonoBehaviour
         firstPogGO = this.transform.GetChild(0).gameObject;
         lastPogGO = firstPogGO;
         pogCount = 1;
+
+        _animator = GetComponent<Animator>();
+    }
+
+    void AnimateStack()
+    {
+        
     }
 
     #region Adding to the stack
