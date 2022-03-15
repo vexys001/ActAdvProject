@@ -102,6 +102,8 @@ public class Pog : MonoBehaviour
         _currentState = "Dropped";
         belongsTo = SystemEnums.Partys.None;
 
+        itself.transform.rotation = Quaternion.identity;
+
         _collider.enabled = true;
         EnableGravity();
     }

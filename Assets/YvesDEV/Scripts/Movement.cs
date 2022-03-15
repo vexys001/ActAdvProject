@@ -17,7 +17,6 @@ public class Movement : MonoBehaviour
     private float _maxSpeed = 6;
     public float gravity = -9.81f;
     public float _jumpForce = 3;
-    public Vector3 velocity;
 
     [SerializeField]
     private GameObject bottomGO = null;
@@ -60,8 +59,6 @@ public class Movement : MonoBehaviour
             thirdPersonCamera.SetActive(false);
             aimCamera.SetActive(true);
             theCursor.SetActive(true);
-
-
         }
         else if (Input.GetButtonUp("Fire2"))
         {
@@ -75,8 +72,9 @@ public class Movement : MonoBehaviour
         if (Input.GetButton("Fire2"))
         {
             _stackHolder.transform.rotation = cam.transform.rotation;
+            //_stackHolder.transform.rotation = new Quaternion(0, cam.transform.rotation.y, cam.transform.rotation.z, cam.transform.rotation.w);
 
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && _stack.pogCount > 1)
             {
                 _stackHolder.SendMessage("ShootPog");
                 ChangeCollider(false);
