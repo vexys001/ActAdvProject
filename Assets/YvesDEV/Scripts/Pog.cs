@@ -6,6 +6,7 @@ public class Pog : MonoBehaviour
 {
     [SerializeField]
     private string _currentState;
+    public bool StandBy;
     [SerializeField]
     private Collider _collider;
     private Rigidbody _rb;
@@ -17,7 +18,7 @@ public class Pog : MonoBehaviour
     public static float ShieldDuration = 5f;
 
     [Header("Info Vars")]
-    PogScriptableObject PogSO;
+    [SerializeField] private PogScriptableObject PogSO;
     public bool IsKey;
 
     public SystemEnums.Partys belongsTo;
@@ -29,11 +30,22 @@ public class Pog : MonoBehaviour
 
         _collider = GetComponentInChildren<Collider>();
         _rb = GetComponentInChildren<Rigidbody>();
+
+        if (StandBy)
+        {
+            StartDropped();
+            ApplyScriptable();
+        }
     }
 
     public void SetScriptable(PogScriptableObject SO)
     {
         PogSO = SO;
+        ApplyScriptable();
+    }
+    
+    public void ApplyScriptable()
+    {
         IsKey = PogSO.IsKey;
         itself.GetComponent<MeshRenderer>().material = PogSO.Material;
     }
