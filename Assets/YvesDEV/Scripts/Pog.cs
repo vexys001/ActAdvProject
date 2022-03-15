@@ -162,7 +162,7 @@ public class Pog : MonoBehaviour
     {
         stack = pStack;
         //Remove this maybe
-        transform.SetParent(null);
+        //transform.SetParent(null);
         _currentState = "isShielding";
         transform.position += Vector3.forward * 2;
 
