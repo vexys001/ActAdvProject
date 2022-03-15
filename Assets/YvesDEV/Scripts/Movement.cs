@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour
 
         bottomGO = _stack.lastPogGO;
 
-        _topPogOffset = new Vector3(0, 0.05f, 0);
+        _topPogOffset = new Vector3(0, 0.03f, 0);
 
         groundMask = LayerMask.NameToLayer("Ground");
 
@@ -168,7 +168,7 @@ public class Movement : MonoBehaviour
         if (!removeFromMiddle) _stack.transform.localPosition += _topPogOffset;
         else _stack.transform.localPosition -= _topPogOffset;
 
-        _col.size = new Vector3(1, 0.1f * _stack.pogCount, 1);
+        _col.size = new Vector3(1, 0.06f * _stack.pogCount, 1);
         bottomGO = _stack.lastPogGO;
     }
 
