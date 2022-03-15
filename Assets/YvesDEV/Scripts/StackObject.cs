@@ -15,6 +15,7 @@ public class StackObject : MonoBehaviour
 
     [Header("Animation")]
     [SerializeField] private Animator _animator;
+    public enum AnimClips { Idle, Walk, Jump}
 
 
     // Start is called before the first frame update
@@ -27,9 +28,20 @@ public class StackObject : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    void AnimateStack()
+    public void AnimateStack(AnimClips clipToPlay)
     {
-        
+        switch (clipToPlay)
+        {
+            case AnimClips.Idle:
+                Debug.Log("Idling Stack");
+                break;
+            case AnimClips.Walk:
+                Debug.Log("Walking Stack");
+                break;
+            case AnimClips.Jump:
+                Debug.Log("Jumping Stack");
+                break;
+        }
     }
 
     #region Adding to the stack

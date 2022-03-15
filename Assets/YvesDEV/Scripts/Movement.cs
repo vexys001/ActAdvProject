@@ -84,10 +84,6 @@ public class Movement : MonoBehaviour
         }
 
         Inputs();
-
-        // TODO: Remove those
-
-        //END OF TODO
     }
 
     private void LateUpdate()
@@ -154,14 +150,17 @@ public class Movement : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward * _acceleration;
             _rb.AddForce(moveDir);
+            _stackHolder.SendMessage("AnimateStack", StackObject.AnimClips.Walk);
         }
+        else if(direction.magnitude <= 0.1f) _stackHolder.SendMessage("AnimateStack", StackObject.AnimClips.Idle);
     }
 
     private void Jump()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             _rb.AddForce(Vector3.up * _jumpForce * Time.deltaTime, ForceMode.Impulse);
+            _stackHolder.SendMessage("AnimateStack", StackObject.AnimClips.Jump);
         }
     }
 
