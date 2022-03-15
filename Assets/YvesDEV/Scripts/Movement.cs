@@ -196,12 +196,13 @@ public class Movement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Pog"))
         {
-            if (collision.gameObject.transform.parent.GetComponent<Pog>().GetState() == "Dropped")
+            Pog collidedPog = collision.gameObject.transform.parent.GetComponent<Pog>();
+            if (collidedPog.GetState() == "Dropped")
             {
                 Debug.Log("Colliding with a dropped pog");
+                collidedPog.SetBelong(SystemEnums.Partys.Ally);
                 _stackHolder.SendMessage("AddPog", collision.transform.parent.gameObject);
             }
-
         }
     }
 

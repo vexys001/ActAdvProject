@@ -20,8 +20,7 @@ public class Pog : MonoBehaviour
     PogScriptableObject PogSO;
     public bool IsKey;
     
-    public enum Partys { None, Ally, Enemy}
-    public Partys belongsTo;
+    public SystemEnums.Partys belongsTo;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +62,11 @@ public class Pog : MonoBehaviour
     {
         return _currentState;
     }
+
+    public void SetBelong(SystemEnums.Partys newBelong)
+    {
+        belongsTo = newBelong;
+    }
     #endregion
 
     void RunStates()
@@ -96,7 +100,7 @@ public class Pog : MonoBehaviour
     {
         transform.SetParent(null);
         _currentState = "Dropped";
-        belongsTo = Partys.None;
+        belongsTo = SystemEnums.Partys.None;
 
         _collider.enabled = true;
         EnableGravity();
