@@ -188,7 +188,6 @@ public class Pog : MonoBehaviour
 
     private void CollisionDetected(Collision collision)
     {
-        Debug.Log("Entered collision");
         if (belongsTo == SystemEnums.Partys.Ally && !collision.gameObject.CompareTag("Player"))
         {
             if (_currentState == "isShooting")

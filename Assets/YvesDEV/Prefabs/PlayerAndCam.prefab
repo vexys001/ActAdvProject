@@ -223,10 +223,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerYves
       objectReference: {fileID: 0}
-    - target: {fileID: 914726801366053622, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
-      propertyPath: m_YAxis.Value
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1346581871040947868, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -283,10 +279,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -5.2
       objectReference: {fileID: 0}
-    - target: {fileID: 1583436080295193692, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 5954354428049909687}
     - target: {fileID: 1583436080295193692, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
       propertyPath: m_LookAt
       value: 
