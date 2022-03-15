@@ -75,6 +75,12 @@ public class Movement : MonoBehaviour
         if (Input.GetButton("Fire2"))
         {
             _stackHolder.transform.rotation = cam.transform.rotation;
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                _stackHolder.SendMessage("ShootPog");
+                ChangeCollider(false);
+            }
         }
 
         Inputs();
