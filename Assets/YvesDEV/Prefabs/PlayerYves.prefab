@@ -986,6 +986,7 @@ MonoBehaviour:
   firstPogGO: {fileID: 0}
   lastPogGO: {fileID: 0}
   ncountrdNonRemovblPogs: 0
+  _animator: {fileID: 0}
 --- !u!1 &9125914903774207108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1072,10 @@ PrefabInstance:
     - target: {fileID: 4707183598703341363, guid: 2f99a7cadb839c043b2a9508d73f3db4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628007785747487514, guid: 2f99a7cadb839c043b2a9508d73f3db4, type: 3}
+      propertyPath: belongsTo
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f99a7cadb839c043b2a9508d73f3db4, type: 3}

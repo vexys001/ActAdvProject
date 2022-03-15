@@ -33,13 +33,13 @@ public class StackObject : MonoBehaviour
         switch (clipToPlay)
         {
             case AnimClips.Idle:
-                Debug.Log("Idling Stack");
+                //Debug.Log("Idling Stack");
                 break;
             case AnimClips.Walk:
-                Debug.Log("Walking Stack");
+                //Debug.Log("Walking Stack");
                 break;
             case AnimClips.Jump:
-                Debug.Log("Jumping Stack");
+                //Debug.Log("Jumping Stack");
                 break;
         }
     }

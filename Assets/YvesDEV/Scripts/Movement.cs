@@ -61,9 +61,9 @@ public class Movement : MonoBehaviour
             aimCamera.SetActive(true);
             theCursor.SetActive(true);
 
-            
+
         }
-        else if(Input.GetButtonUp("Fire2"))
+        else if (Input.GetButtonUp("Fire2"))
         {
             thirdPersonCamera.SetActive(true);
             aimCamera.SetActive(false);
@@ -152,7 +152,7 @@ public class Movement : MonoBehaviour
             _rb.AddForce(moveDir);
             _stackHolder.SendMessage("AnimateStack", StackObject.AnimClips.Walk);
         }
-        else if(direction.magnitude <= 0.1f) _stackHolder.SendMessage("AnimateStack", StackObject.AnimClips.Idle);
+        else if (direction.magnitude <= 0.1f) _stackHolder.SendMessage("AnimateStack", StackObject.AnimClips.Idle);
     }
 
     private void Jump()
@@ -184,11 +184,11 @@ public class Movement : MonoBehaviour
         if (other.CompareTag("HeightChecker"))
         {
             int maxHeight = other.GetComponent<HeightChecker>().MaxHeight;
-            if(_stack.pogCount > maxHeight)
+            if (_stack.pogCount > maxHeight)
             {
                 int toRemove = _stack.pogCount - maxHeight;
                 _stackHolder.SendMessage("RemoveXNonKeys", toRemove);
-            }   
+            }
         }
     }
 
@@ -196,8 +196,12 @@ public class Movement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Pog"))
         {
-            Debug.Log("Colliding with a pog");
-            _stackHolder.SendMessage("AddPog", collision.transform.parent.gameObject);
+            if (collision.gameObject.transform.parent.GetComponent<Pog>().GetState() == "Dropped")
+            {
+                Debug.Log("Colliding with a dropped pog");
+                _stackHolder.SendMessage("AddPog", collision.transform.parent.gameObject);
+            }
+
         }
     }
 

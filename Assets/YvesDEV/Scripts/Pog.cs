@@ -19,6 +19,9 @@ public class Pog : MonoBehaviour
     [Header("Info Vars")]
     PogScriptableObject PogSO;
     public bool IsKey;
+    
+    public enum Partys { None, Ally, Enemy}
+    public Partys belongsTo;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +58,11 @@ public class Pog : MonoBehaviour
         _rb.useGravity = false;
         _rb.constraints = RigidbodyConstraints.FreezeAll;
     }
+
+    public string GetState()
+    {
+        return _currentState;
+    }
     #endregion
 
     void RunStates()
@@ -88,6 +96,7 @@ public class Pog : MonoBehaviour
     {
         transform.SetParent(null);
         _currentState = "Dropped";
+        belongsTo = Partys.None;
 
         _collider.enabled = true;
         EnableGravity();
@@ -102,6 +111,8 @@ public class Pog : MonoBehaviour
         _currentState = "none";
         _collider.enabled = false;
         itself.transform.localPosition = Vector3.zero;
+
+        
 
         DisableGravity();
     }
