@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0b02626a5c182e428560f552f8e5de6, type: 3}
-  m_Name: PogKey
+  m_Name: HurtlePogData
   m_EditorClassIdentifier: 
-  IsKey: 1
-  Material: {fileID: -6922793697723135513, guid: 88b40493810b79f458678503e595af83, type: 3}
+  IsKey: 0
+  Material: {fileID: 8720599120576084867, guid: e8829e22ef5c2334a8e7970468cdc7d2, type: 3}
