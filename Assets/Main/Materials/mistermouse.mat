@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pikafite
+  m_Name: mistermouse
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -37,12 +37,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1.37, y: 1.24}
-        m_Offset: {x: 0.18, y: -0.08}
+        m_Scale: {x: 1.28, y: 1.26}
+        m_Offset: {x: 0.16, y: -0.1}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1a2e2eddf53620141bca28181f803f1c, type: 3}
-        m_Scale: {x: 1.37, y: 1.24}
-        m_Offset: {x: 0.18, y: -0.08}
+        m_Texture: {fileID: 2800000, guid: 19e7b5cf7f039984a9a4a5e524004ecc, type: 3}
+        m_Scale: {x: 1.28, y: 1.26}
+        m_Offset: {x: 0.16, y: -0.1}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
