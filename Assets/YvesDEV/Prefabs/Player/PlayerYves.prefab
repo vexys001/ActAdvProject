@@ -444,7 +444,7 @@ MonoBehaviour:
   _acceleration: 6
   _maxSpeed: 6
   gravity: -9.81
-  _jumpForce: 60
+  _jumpForce: 6
   bottomGO: {fileID: 7721166819259646047}
   groundMask:
     serializedVersion: 2

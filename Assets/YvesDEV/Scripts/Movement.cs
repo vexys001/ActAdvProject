@@ -17,6 +17,7 @@ public class Movement : MonoBehaviour
     private float _maxSpeed = 6;
     public float gravity = -9.81f;
     public float _jumpForce = 3;
+    public bool hasJumped = false;
 
     [SerializeField]
     private GameObject bottomGO = null;
@@ -84,9 +85,9 @@ public class Movement : MonoBehaviour
         Inputs();
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
-
+        
     }
 
     private void Inputs()
@@ -127,13 +128,14 @@ public class Movement : MonoBehaviour
             _stackHolder.SendMessage("RemoveXNonKeys", 5);
         }
 
-        if (IsGrounded().Length >= 1)
+        if (FindGround().Length >= 1)
         {
-            Debug.Log("Grounded: " + bottomGO.transform.position);
             Move();
-            Jump();
+
+            if (_rb.velocity.y == 0 && hasJumped) hasJumped = false;
+
+            if (Input.GetKeyDown(KeyCode.Space) && !hasJumped) Jump();
         }
-        else Debug.Log("NOT Grounded: " + bottomGO.transform.position);
     }
 
     private void Move()
@@ -157,11 +159,15 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _rb.AddForce(Vector3.up * _jumpForce * Time.deltaTime, ForceMode.Impulse);
-            _stackHolder.SendMessage("AnimateStack", StackObject.AnimClips.Jump);
-        }
+        //hasJumped = true;
+        _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        _stackHolder.SendMessage("AnimateStack", StackObject.AnimClips.Jump);
+        Invoke("DelayJump", 0.1f);
+    }
+
+    private void DelayJump()
+    {
+        hasJumped = true;
     }
 
     private void ChangeCollider(bool removeFromMiddle)
@@ -174,10 +180,10 @@ public class Movement : MonoBehaviour
         bottomGO = _stack.lastPogGO;
     }
 
-    private RaycastHit[] IsGrounded()
+    private RaycastHit[] FindGround()
     {
         //return Physics.OverlapSphere(bottomGO.transform.localPosition, 1f, groundMask);
-        return Physics.RaycastAll(bottomGO.transform.position, Vector3.down,  groundMask);
+        return Physics.RaycastAll(bottomGO.transform.position, Vector3.down / 20, groundMask);
         //return Physics.BoxCastAll((bottomGO.transform.position, new Vector3(0.5f, 0.5f, 0.5f), Vector3.down, groundMask);
         //return Physics.BoxCastAll(bottomGO.transform.position, new Vector3(0.5f, 0.5f, 0.5f), Vector3.down, Quaternion.identity,0.1f, groundMask); 
     }
