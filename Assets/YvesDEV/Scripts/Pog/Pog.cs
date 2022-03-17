@@ -31,7 +31,12 @@ public class Pog : MonoBehaviour
         _collider = GetComponentInChildren<Collider>();
         _rb = GetComponentInChildren<Rigidbody>();
 
+        if (!IsKey)
+        {
+            PogSO = RandomPogPicker.Instance.RandomNormalPogSO();
+        }
         ApplyScriptable();
+        
         if (StandBy)
         {
             StartDropped();
