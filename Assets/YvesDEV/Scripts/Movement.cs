@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour
 
         bottomGO = _stack.lastPogGO;
 
-        _topPogOffset = new Vector3(0, 0.03f, 0);
+        _topPogOffset = new Vector3(0, 0.032f, 0);
 
         groundMask = LayerMask.NameToLayer("Ground");
 
@@ -129,9 +129,11 @@ public class Movement : MonoBehaviour
 
         if (IsGrounded().Length >= 1)
         {
+            Debug.Log("Grounded: " + bottomGO.transform.position);
             Move();
             Jump();
         }
+        else Debug.Log("NOT Grounded: " + bottomGO.transform.position);
     }
 
     private void Move()
@@ -168,13 +170,16 @@ public class Movement : MonoBehaviour
         if (!removeFromMiddle) _stack.transform.localPosition += _topPogOffset;
         else _stack.transform.localPosition -= _topPogOffset;
 
-        _col.size = new Vector3(1, 0.06f * _stack.pogCount, 1);
+        _col.size = new Vector3(1, 0.064f * _stack.pogCount, 1);
         bottomGO = _stack.lastPogGO;
     }
 
     private RaycastHit[] IsGrounded()
     {
-        return Physics.RaycastAll(bottomGO.transform.position, Vector3.down, groundMask);
+        //return Physics.OverlapSphere(bottomGO.transform.localPosition, 1f, groundMask);
+        return Physics.RaycastAll(bottomGO.transform.position, Vector3.down,  groundMask);
+        //return Physics.BoxCastAll((bottomGO.transform.position, new Vector3(0.5f, 0.5f, 0.5f), Vector3.down, groundMask);
+        //return Physics.BoxCastAll(bottomGO.transform.position, new Vector3(0.5f, 0.5f, 0.5f), Vector3.down, Quaternion.identity,0.1f, groundMask); 
     }
 
     private void OnTriggerEnter(Collider other)
@@ -200,9 +205,10 @@ public class Movement : MonoBehaviour
                 Debug.Log("Colliding with a dropped pog");
                 collidedPog.SetBelong(SystemEnums.Partys.Ally);
                 _stackHolder.SendMessage("AddPog", collision.transform.parent.gameObject);
-            }else if (collidedPog.GetState().Equals("isShooting") || collidedPog.GetState().Equals("isShielding"))
+            }
+            else if (collidedPog.GetState().Equals("isShooting") || collidedPog.GetState().Equals("isShielding"))
             {
-                if(collidedPog.belongsTo == SystemEnums.Partys.Enemy)
+                if (collidedPog.belongsTo == SystemEnums.Partys.Enemy)
                 {
                     _stackHolder.SendMessage("DropPog", StackObject.Positions.Top);
                     ChangeCollider(false);
@@ -215,7 +221,8 @@ public class Movement : MonoBehaviour
     {
         if (DEBUG)
         {
-            Debug.DrawRay(bottomGO.transform.position, Vector3.down, Color.red, 50f, false);
+            //Debug.DrawRay(bottomGO.transform.position, Vector3.down, Color.red, 50f, false);
+            Gizmos.DrawWireSphere(bottomGO.transform.position, 1f);
         }
     }
 }
