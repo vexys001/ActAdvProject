@@ -65,11 +65,12 @@ public class StackObject : MonoBehaviour
     {
         pogCount++;
 
-        Transform temp = lastPogGO.transform.GetChild(0);
+        //Transform temp = lastPogGO.transform.GetChild(0);
+        Transform temp = lastPogGO.transform;
 
         lastPogGO = pPog;
 
-        lastPogGO.transform.SetParent(temp);
+        lastPogGO.transform.SetParent(temp.GetChild(0));
         gameObject.SendMessageUpwards("ChangeCollider", false);
         lastPogGO.SendMessage("StopDropped");
 
