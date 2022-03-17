@@ -3,47 +3,97 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] private Transform _initialPosition = null;
+    [SerializeField] private Vector3 _initialPosition = Vector3.zero;
     [SerializeField] private GameObject _target = null;
+    [SerializeField] private float _movementUpdateDelay = 0f;
 
     private NavMeshAgent _enemy = null;
     private bool _isInsideAggro = false;
     private bool _isInsideThreshold = false;
 
-    //private enum _states { aggro, deaggro };
+    private bool _moving = false;
+
+    //private enum _states {aggro, deaggro};
     //private _states _States = _states.deaggro;
+
+    //NOTE: Add a third zone? "AttackRange" which will flip a boolean to tell this script to chase player if zone is exited?
+    //NOTE2: Aggro will become an external BoxCollider object shared between enemies.
 
     private void Awake()
     {
         _enemy = gameObject.GetComponent<NavMeshAgent>();
-        _enemy.SetDestination(_initialPosition.position);
+        _enemy.SetDestination(_initialPosition);
+
+        _initialPosition = gameObject.transform.position;
     }
 
     private void Update()
     {
+        MoveUpdate(_movementUpdateDelay);
+
         if (_isInsideAggro == true)
         {
-            GoTo(_target.transform.position);
+            EnemyMove(_target.transform.position);
             //Debug.Log("Agrro'd.");
+
+            if (_isInsideThreshold == true)
+            {
+                //BACK AWAY FROM PLAYER.
+            }
+            else if (_isInsideThreshold == false)
+            {
+                _enemy.isStopped = true;
+                //NOW ATTACK PLAYER.
+            }
         }
         else if (_isInsideAggro == false)
         {
-            GoTo(_initialPosition.position);
+            _enemy.isStopped = true;
+
+            //NOW GO BACK TO SPAWN POINT.
+            EnemyMove(_initialPosition);    
+
             //Debug.Log("De-aggro'd.");
         }
     }
 
-    private void GoTo(Vector3 destination)
+    private void EnemyMove(Vector3 destination)
+    {
+        if (_moving == true)
+        {
+            _enemy.isStopped = false;
+            _enemy.SetDestination(destination);
+            _moving = false;
+        }
+    }
+
+    private void MoveUpdate(float updateDelay)
+    {
+        float counter = 0f;
+
+        if (_moving == false)
+        {
+            counter += Time.deltaTime;
+
+            if (counter >= updateDelay)
+            {
+                counter = 0f;
+                _moving = true;
+            }
+        }
+    }
+
+    /*private void GoTo(Vector3 destination)
     {
         _enemy.isStopped = false;
         gameObject.transform.LookAt(destination);
         _enemy.SetDestination(destination);
-    }
+    }*/
 
     private void KeepAttackRange(Vector3 targetPosition)
     {
         gameObject.transform.LookAt(_initialPosition);
-        _enemy.SetDestination(_initialPosition.position);
+        _enemy.SetDestination(_initialPosition);
     }
 
 
@@ -53,38 +103,42 @@ public class EnemyAI : MonoBehaviour
         return (gameObject.transform.position - _target.transform.position).normalized;
     }
 
-    private void Flee()
+    /*private void Flee()
     {
         if (_isInsideThreshold == true)
         {
-            GoTo(GetFleeDirection());
+            //GoTo(GetFleeDirection());
         }
         else if (_isInsideThreshold == false)
         {
-            _enemy.isStopped = true;
+            //_enemy.isStopped = true;
             //Resume attacking.
         }
         
-    }
+    }*/
 
     public void IsAggro()
     {
         _isInsideAggro = true;
+        _moving = true;
     }
 
     public void NotAggro()
     {
         _isInsideAggro = false;
+        _moving = false;
     }
 
     public void IsInThreshold()
     {
         _isInsideThreshold = true;
+        _moving = true;
     }
 
     public void NotInThreshold()
     {
         _isInsideThreshold = false;
+        _moving = false;
     }
 
     ///For later use.
