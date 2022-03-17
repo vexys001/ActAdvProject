@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SkullSmilePogData
   m_EditorClassIdentifier: 
   IsKey: 0
-  Material: {fileID: 0}
+  Material: {fileID: 2100000, guid: 3b6fd56291b40a14580b8bf24cd40a99, type: 2}

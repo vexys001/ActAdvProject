@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AlienPogData
   m_EditorClassIdentifier: 
   IsKey: 0
-  Material: {fileID: 0}
+  Material: {fileID: 2100000, guid: 090c40aafae80684d9f30aace1f00b59, type: 2}

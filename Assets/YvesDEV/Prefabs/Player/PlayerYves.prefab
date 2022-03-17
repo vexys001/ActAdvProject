@@ -441,10 +441,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stackHolder: {fileID: 0}
-  _acceleration: 6
-  _maxSpeed: 6
+  _acceleration: 12
+  _maxSpeed: 18
   gravity: -9.81
   _jumpForce: 6
+  hasJumped: 0
   bottomGO: {fileID: 7721166819259646047}
   groundMask:
     serializedVersion: 2

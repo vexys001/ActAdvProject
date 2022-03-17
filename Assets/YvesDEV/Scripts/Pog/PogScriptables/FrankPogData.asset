@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FrankPogData
   m_EditorClassIdentifier: 
   IsKey: 0
-  Material: {fileID: 0}
+  Material: {fileID: 2100000, guid: 10c42876b4e3be24792b33d263dfe64f, type: 2}

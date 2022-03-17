@@ -53,7 +53,7 @@ MonoBehaviour:
   stack: {fileID: 0}
   Speed: 10
   Lifespan: 3
-  PogSO: {fileID: 11400000, guid: cc177b227c8b7bf4fa46a41cda5df8be, type: 2}
+  PogSO: {fileID: 11400000, guid: ec55d5490c7eb1d49bd809344d4cc277, type: 2}
   IsKey: 0
   belongsTo: 0
 --- !u!1 &4707183599769566290

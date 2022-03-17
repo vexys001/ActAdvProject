@@ -31,10 +31,10 @@ public class Pog : MonoBehaviour
         _collider = GetComponentInChildren<Collider>();
         _rb = GetComponentInChildren<Rigidbody>();
 
+        ApplyScriptable();
         if (StandBy)
         {
             StartDropped();
-            ApplyScriptable();
         }
     }
 

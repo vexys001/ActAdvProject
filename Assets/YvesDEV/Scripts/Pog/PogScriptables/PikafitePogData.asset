@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PikafitePogData
   m_EditorClassIdentifier: 
   IsKey: 0
-  Material: {fileID: 0}
+  Material: {fileID: 2100000, guid: 5a2f722c2db824f45a9d14bbcbb8acec, type: 2}

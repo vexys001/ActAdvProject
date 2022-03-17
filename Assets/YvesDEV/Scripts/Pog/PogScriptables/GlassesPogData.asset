@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GlassesPogData
   m_EditorClassIdentifier: 
   IsKey: 0
-  Material: {fileID: 0}
+  Material: {fileID: 2100000, guid: edea7a84db0f48b428ed105785e9e5ff, type: 2}

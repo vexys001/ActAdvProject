@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PokeballPogData
   m_EditorClassIdentifier: 
   IsKey: 0
-  Material: {fileID: 0}
+  Material: {fileID: 2100000, guid: 8e2b95547d4751442a8c72810b529b73, type: 2}
