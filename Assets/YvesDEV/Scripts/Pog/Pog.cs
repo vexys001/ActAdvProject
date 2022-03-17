@@ -50,6 +50,11 @@ public class Pog : MonoBehaviour
         itself.GetComponent<MeshRenderer>().material = PogSO.Material;
     }
 
+    private void DelayActivateCollider()
+    {
+        _collider.enabled = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -113,7 +118,6 @@ public class Pog : MonoBehaviour
         transform.SetParent(null);
         _currentState = "Dropped";
         belongsTo = SystemEnums.Partys.None;
-
         itself.transform.rotation = Quaternion.identity;
 
         _collider.enabled = true;
@@ -140,7 +144,7 @@ public class Pog : MonoBehaviour
         transform.SetParent(null);
         _currentState = "isShooting";
 
-        _collider.enabled = true;
+        Invoke("DelayActivateCollider", 0.1f);
 
         Invoke("EndShoot", Lifespan);
     }
