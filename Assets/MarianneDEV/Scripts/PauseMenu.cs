@@ -12,7 +12,8 @@ public class PauseMenu : MonoBehaviour
     private void Awake()
     {
         PauseMenuUI.SetActive(false);
-        Debug.Log("awake entered");
+        Time.timeScale = 1f;
+        
         
     }
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class PauseMenu : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
 
-            Debug.Log("escape input detected");
+            
             if(GamePaused == true)
             {
                 ResumeGame();
@@ -29,7 +30,7 @@ public class PauseMenu : MonoBehaviour
             else             
             {
                 PauseGame();
-                Debug.Log("pausing");
+                
                 
             }
         }
@@ -42,7 +43,6 @@ public class PauseMenu : MonoBehaviour
  
     }
 
-   
     public void ResumeGame()
     {
         //Disable PauseMenu
@@ -81,7 +81,7 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
-        Debug.Log("loading menu");
+        
         SceneManager.LoadScene("_MainMenu");
         
     }

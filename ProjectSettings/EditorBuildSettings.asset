@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/_MainMenu.unity
     guid: 090d62a140162a14f9b659970ff8c5e6
   - enabled: 1
-    path: Assets/JulienDEV/Scenes/Test_Scene.unity
-    guid: 847eb329b275e064293c3fe836b942ec
+    path: Assets/Scenes/_MainTest.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/_PauseMenu.unity
-    guid: 03a336e43ad2ad54e857894179152e1d
+    path: Assets/MarianneDEV/Scenes/_MarMainTest.unity
+    guid: ce97675c5120a9e4ca3829f73bee6522
+  - enabled: 1
+    path: Assets/JulienDEV/_Scenes/Test_Scene.unity
+    guid: 847eb329b275e064293c3fe836b942ec
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
