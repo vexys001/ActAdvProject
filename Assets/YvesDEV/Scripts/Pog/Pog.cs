@@ -34,9 +34,9 @@ public class Pog : MonoBehaviour
         if (!IsKey)
         {
             PogSO = RandomPogPicker.Instance.RandomNormalPogSO();
+            ApplyScriptable();
         }
-        ApplyScriptable();
-        
+
         if (StandBy)
         {
             StartDropped();
@@ -48,7 +48,7 @@ public class Pog : MonoBehaviour
         PogSO = SO;
         ApplyScriptable();
     }
-    
+
     public void ApplyScriptable()
     {
         IsKey = PogSO.IsKey;
