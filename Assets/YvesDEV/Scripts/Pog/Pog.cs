@@ -118,6 +118,7 @@ public class Pog : MonoBehaviour
         transform.SetParent(null);
         _currentState = "Dropped";
         belongsTo = SystemEnums.Partys.None;
+        transform.rotation = Quaternion.identity;
         itself.transform.rotation = Quaternion.identity;
 
         _collider.enabled = true;
