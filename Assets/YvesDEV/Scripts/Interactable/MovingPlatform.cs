@@ -7,6 +7,7 @@ public class MovingPlatform : MonoBehaviour
     public Transform StartPoint, EndPoint;
     [SerializeField]
     private float _platSpeed = 3;
+    [SerializeField] private bool _activated = false;
 
     Transform _objective;
 
@@ -22,14 +23,23 @@ public class MovingPlatform : MonoBehaviour
 
     private void MovePlatform()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _objective.position, _platSpeed * Time.deltaTime);
+        if (_activated)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _objective.position, _platSpeed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, _objective.position) <= 0.1f) ChangeDestination();
+            if (Vector3.Distance(transform.position, _objective.position) <= 0.1f) ChangeDestination();
+        }
+        
     }
 
     private void ChangeDestination()
     {
         _objective = _objective.position != StartPoint.position ? StartPoint : EndPoint;
+    }
+
+    private void ActivatePlat()
+    {
+        _activated = true;
     }
 
     private void OnCollisionEnter(Collision collision)
