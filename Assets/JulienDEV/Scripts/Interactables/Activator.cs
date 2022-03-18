@@ -6,11 +6,11 @@ public class Activator : MonoBehaviour
     [SerializeField] private _modes _Modes;
 
     //Common
-    [SerializeField] private GameObject _target = null;
+    [SerializeField] protected GameObject _target = null;
 
     [SerializeField] private Color _objectColor = Color.green;
-    [SerializeField] private Color _pressedObjectColor = Color.red;
-    private Renderer _objectRenderer = null;
+    [SerializeField] protected Color _pressedObjectColor = Color.red;
+    protected Renderer _objectRenderer = null;
 
     //Optional /  case by case
     [SerializeField] protected string _colliderTag = null;
