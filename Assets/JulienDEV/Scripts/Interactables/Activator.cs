@@ -2,18 +2,23 @@ using UnityEngine;
 
 public class Activator : MonoBehaviour
 {
-    [SerializeField] private GameObject _target = null;
-    [SerializeField] private string _colliderTag = null;
-
     private enum _modes {button, buttonOneShot, buttonSelfDestruct, pressurePlate};
     [SerializeField] private _modes _Modes;
+
+    //Common
+    [SerializeField] private GameObject _target = null;
 
     [SerializeField] private Color _objectColor = Color.green;
     [SerializeField] private Color _pressedObjectColor = Color.red;
     private Renderer _objectRenderer = null;
 
+    //Optional /  case by case
+    [SerializeField] protected string _colliderTag = null;
+
     private bool _buttonOneShotPressed = false;
     private bool _isPressurePlatePressed = false;
+
+
 
     private void Awake()
     {
@@ -25,13 +30,13 @@ public class Activator : MonoBehaviour
     {
         switch(_Modes)
         {
-            case _modes.button:
+            /*case _modes.button:
                 if (collision.gameObject.tag == _colliderTag)
                 {
                     OnOff();
                 }
                 break;
-
+            */
             case _modes.buttonOneShot:
                 if (collision.gameObject.tag == _colliderTag && _buttonOneShotPressed == false)
                 {
@@ -58,10 +63,11 @@ public class Activator : MonoBehaviour
     {
         switch (_Modes)
         {
+            /*
             case _modes.button:
                 //
                 break;
-
+            */
             case _modes.buttonOneShot:
                 //
                 break;
@@ -84,10 +90,11 @@ public class Activator : MonoBehaviour
     {
         switch (_Modes)
         {
+            /*
             case _modes.button:
                 //
                 break;
-
+            */
             case _modes.buttonOneShot:
                 //
                 break;
@@ -103,25 +110,27 @@ public class Activator : MonoBehaviour
         }
     }
 
-    void OnOff()
+    protected void OnOff()
     {
         if (_target.activeSelf == true)
         {
             _target.SetActive(false);
+            _objectRenderer.material.color = _pressedObjectColor;
         }
         else if (_target.activeSelf == false)
         {
             _target.SetActive(true);
+            _objectRenderer.material.color = _objectColor;
         }
 
-        if (_objectRenderer.material.color == _pressedObjectColor)
+        /*if (_objectRenderer.material.color == _pressedObjectColor)
         {
             _objectRenderer.material.color = _objectColor;
         }
         else if (_objectRenderer.material.color == _objectColor)
         {
             _objectRenderer.material.color = _pressedObjectColor;
-        }
+        }*/
 
         //Debug.Log("Pressed something!");
     }
