@@ -15,10 +15,6 @@ public class Activator : MonoBehaviour
     //Optional /  case by case
     [SerializeField] protected string _colliderTag = null;
 
-    private bool _isPressurePlatePressed = false;
-
-
-
     private void Awake()
     {
         _objectRenderer = gameObject.GetComponent<Renderer>();
@@ -52,9 +48,9 @@ public class Activator : MonoBehaviour
                 }
                 break;
 
-            case _modes.pressurePlate:
+            /*case _modes.pressurePlate:
                 //
-                break;
+                break;*/
         }
     }
 
@@ -76,13 +72,13 @@ public class Activator : MonoBehaviour
                 //
                 break;
 
-            case _modes.pressurePlate:
+            /*case _modes.pressurePlate:
                 if (collision.gameObject.tag == _colliderTag && _isPressurePlatePressed == false)
                 {
                     OnOff();
                     _isPressurePlatePressed = true;
                 }
-                break;
+                break;*/
         }
     }
 
