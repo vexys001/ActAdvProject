@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Activator : MonoBehaviour
 {
-    private enum _modes {button, buttonOneShot, buttonSelfDestruct, pressurePlate};
+    private enum _modes { button, buttonOneShot, buttonSelfDestruct, pressurePlate };
     [SerializeField] private _modes _Modes;
 
     //Common
@@ -15,7 +15,6 @@ public class Activator : MonoBehaviour
     //Optional /  case by case
     [SerializeField] protected string _colliderTag = null;
 
-    private bool _buttonOneShotPressed = false;
     private bool _isPressurePlatePressed = false;
 
 
@@ -28,7 +27,7 @@ public class Activator : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        switch(_Modes)
+        switch (_Modes)
         {
             /*case _modes.button:
                 if (collision.gameObject.tag == _colliderTag)
@@ -37,14 +36,14 @@ public class Activator : MonoBehaviour
                 }
                 break;
             */
-            case _modes.buttonOneShot:
+            /*case _modes.buttonOneShot:
                 if (collision.gameObject.tag == _colliderTag && _buttonOneShotPressed == false)
                 {
                     OnOff();
                     _buttonOneShotPressed = true;
                 }
                 break;
-
+            */
             case _modes.buttonSelfDestruct:
                 if (collision.gameObject.tag == _colliderTag)
                 {
@@ -68,10 +67,11 @@ public class Activator : MonoBehaviour
                 //
                 break;
             */
+            /*
             case _modes.buttonOneShot:
                 //
                 break;
-
+            */
             case _modes.buttonSelfDestruct:
                 //
                 break;
@@ -94,19 +94,19 @@ public class Activator : MonoBehaviour
             case _modes.button:
                 //
                 break;
-            */
+            
             case _modes.buttonOneShot:
                 //
                 break;
-
+*/
             case _modes.buttonSelfDestruct:
                 //
                 break;
 
-            case _modes.pressurePlate:
+            /*case _modes.pressurePlate:
                 OnOff();
                 _isPressurePlatePressed = false;
-                break;
+                break;*/
         }
     }
 
