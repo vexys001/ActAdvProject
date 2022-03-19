@@ -567,10 +567,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1243391085937137223, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.04
-      objectReference: {fileID: 0}
     - target: {fileID: 1702145511707649123, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -619,10 +615,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -3.1297526e-10
       objectReference: {fileID: 0}
-    - target: {fileID: 1876515837416557821, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2429446926988888145, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.25
@@ -663,10 +655,6 @@ PrefabInstance:
       propertyPath: theCursor
       value: 
       objectReference: {fileID: 1339084793}
-    - target: {fileID: 5561984565273172063, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
-      propertyPath: _slimeModel
-      value: 
-      objectReference: {fileID: 1943777643}
     - target: {fileID: 7338585406552213579, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1624,11 +1612,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LocksHolder: {fileID: 5308807475971547314}
---- !u!1 &1943777643 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1876515837416557821, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
-  m_PrefabInstance: {fileID: 593124055}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1993046940
 GameObject:
   m_ObjectHideFlags: 0
