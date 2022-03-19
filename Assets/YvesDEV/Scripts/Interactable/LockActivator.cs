@@ -15,13 +15,12 @@ public class LockActivator : Activator
     {
         if (collision.gameObject.tag == _colliderTag)
         {
-            Debug.Log($"This pog {collision.gameObject.name} collided with the lock");
             Pog pogObject = collision.gameObject.GetComponentInParent<Pog>();
             if(pogObject.KeyColor == _requiredColor)
             {
-                //OnOff();
+                _target.SendMessage("RemovedLock");
+                Destroy(collision.transform.parent.gameObject);
                 Destroy(gameObject);
-                //_target.SendMessage("RemovedLock");
             }
         }
     }

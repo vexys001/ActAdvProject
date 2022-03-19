@@ -144,7 +144,6 @@ public class Movement : MonoBehaviour
         if (FindGround().Length >= 1)
         {
             Move();
-            Debug.Log(_rb.velocity.y);
 
             if (hasJumped && _rb.velocity.y <= -1) goingDown = true;
 
@@ -228,7 +227,6 @@ public class Movement : MonoBehaviour
             Pog collidedPog = collision.gameObject.transform.parent.GetComponent<Pog>();
             if (collidedPog.GetState() == "Dropped")
             {
-                Debug.Log("Colliding with a dropped pog");
                 collidedPog.SetBelong(SystemEnums.Partys.Ally);
                 _stackHolder.SendMessage("AddPog", collision.transform.parent.gameObject);
             }

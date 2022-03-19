@@ -118,17 +118,6 @@ public class Activator : MonoBehaviour
             _target.SetActive(true);
             _objectRenderer.material.color = _objectColor;
         }
-
-        /*if (_objectRenderer.material.color == _pressedObjectColor)
-        {
-            _objectRenderer.material.color = _objectColor;
-        }
-        else if (_objectRenderer.material.color == _objectColor)
-        {
-            _objectRenderer.material.color = _pressedObjectColor;
-        }*/
-
-        //Debug.Log("Pressed something!");
     }
 
     void PlayAnimation()

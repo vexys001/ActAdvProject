@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class MultiLockDoorActivator : MonoBehaviour
 {
+    public GameObject LocksHolder;
+    private int lockNum;
     // Start is called before the first frame update
     void Start()
     {
-        
+        lockNum = LocksHolder.GetComponentsInChildren<LockActivator>().Length;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void RemovedLock()
     {
-        
+        lockNum--;
+
+        if (lockNum <= 0) Destroy(gameObject);
     }
 }
