@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     public float gravity = -9.81f;
     public float _jumpForce = 3;
     public bool hasJumped = false;
+    public bool goingDown = false;
 
     [SerializeField]
     private GameObject bottomGO = null;
@@ -39,6 +40,8 @@ public class Movement : MonoBehaviour
 
     [Header("Debugging")]
     public bool DEBUG;
+
+    public AudioSource _audioSource;
 
     private void Start()
     {
@@ -141,8 +144,13 @@ public class Movement : MonoBehaviour
         if (FindGround().Length >= 1)
         {
             Move();
+            Debug.Log(_rb.velocity.y);
 
-            if (_rb.velocity.y == 0 && hasJumped) hasJumped = false;
+            if (hasJumped && _rb.velocity.y <= 0) goingDown = true;
+
+            if (hasJumped && goingDown && _rb.velocity.y == 0) { 
+                hasJumped = false; 
+            }
 
             if (Input.GetKeyDown(KeyCode.Space) && !hasJumped) Jump();
         }
@@ -169,7 +177,7 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        //hasJumped = true;
+        goingDown = false;
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         _stackHolder.SendMessage("AnimateStack", StackObject.AnimClips.Jump);
         Invoke("DelayJump", 0.1f);
