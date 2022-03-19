@@ -442,8 +442,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stackHolder: {fileID: 0}
-  _acceleration: 12
-  _maxSpeed: 18
+  _acceleration: 5
+  _maxSpeed: 12
   gravity: -9.81
   _jumpForce: 6
   hasJumped: 0
