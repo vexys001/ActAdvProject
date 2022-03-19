@@ -56189,7 +56189,7 @@ PrefabInstance:
       objectReference: {fileID: 2132113597}
     - target: {fileID: 6927976465279855887, guid: dce5deb25c79d7241912c070e12b04be, type: 3}
       propertyPath: m_Name
-      value: f
+      value: EnemyTest
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dce5deb25c79d7241912c070e12b04be, type: 3}
