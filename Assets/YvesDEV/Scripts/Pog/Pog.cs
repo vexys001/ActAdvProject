@@ -94,6 +94,11 @@ public class Pog : MonoBehaviour
         _rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 
+    void PushBack()
+    {
+
+    }
+
     public string GetState()
     {
         return _currentState;
@@ -102,6 +107,24 @@ public class Pog : MonoBehaviour
     public void SetBelong(SystemEnums.Partys newBelong)
     {
         belongsTo = newBelong;
+    }
+
+    private void CollisionDetected(Collision collision)
+    {
+        if (belongsTo == SystemEnums.Partys.Ally && !collision.gameObject.CompareTag("Player"))
+        {
+            _audioSource.Play();
+            if (_currentState == "isShooting")
+            {
+                CancelInvoke("EndShoot");
+                EndShoot();
+            }
+            if (_currentState == "isShielding")
+            {
+                CancelInvoke("EndShield");
+                StartDropped();
+            }
+        }
     }
     #endregion
 
@@ -212,22 +235,4 @@ public class Pog : MonoBehaviour
     }
 
     #endregion
-
-    private void CollisionDetected(Collision collision)
-    {
-        if (belongsTo == SystemEnums.Partys.Ally && !collision.gameObject.CompareTag("Player"))
-        {
-            _audioSource.Play();
-            if (_currentState == "isShooting")
-            {
-                CancelInvoke("EndShoot");
-                EndShoot();
-            }
-            if (_currentState == "isShielding")
-            {
-                CancelInvoke("EndShield");
-                StartDropped();
-            }
-        }
-    }
 }
