@@ -31,6 +31,11 @@ public class Movement : MonoBehaviour
     public GameObject thirdPersonCamera;
     public GameObject aimCamera;
     public GameObject theCursor;
+    [Header("Sounds")]
+    public AudioClip Shooting;
+    public AudioClip Jumping;
+    public AudioClip Landing;
+    public AudioSource leson;
 
     [Header("Debugging")]
     public bool DEBUG;
@@ -50,6 +55,7 @@ public class Movement : MonoBehaviour
         thirdPersonCamera.SetActive(true);
         aimCamera.SetActive(false);
         theCursor.SetActive(false);
+        leson = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -77,6 +83,7 @@ public class Movement : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1") && _stack.pogCount > 1)
             {
+                leson.PlayOneShot(Shooting);
                 _stackHolder.SendMessage("ShootPog");
                 ChangeCollider(false);
             }
@@ -106,6 +113,7 @@ public class Movement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
+                leson.PlayOneShot(Shooting);
                 _stackHolder.SendMessage("ShootPog");
                 ChangeCollider(false);
             }
@@ -113,10 +121,12 @@ public class Movement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 _stackHolder.SendMessage("ShieldPog");
+                leson.PlayOneShot(Shooting);
                 ChangeCollider(false);
             }
             if (Input.GetKeyDown(KeyCode.Y))
             {
+                leson.PlayOneShot(Landing);
                 _stackHolder.SendMessage("DropPog", StackObject.Positions.Top);
                 ChangeCollider(false);
             }
@@ -163,6 +173,7 @@ public class Movement : MonoBehaviour
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         _stackHolder.SendMessage("AnimateStack", StackObject.AnimClips.Jump);
         Invoke("DelayJump", 0.1f);
+        leson.PlayOneShot(Jumping);
     }
 
     private void DelayJump()
