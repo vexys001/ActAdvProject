@@ -3,9 +3,12 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] private Vector3 _initialPosition = Vector3.zero;
     [SerializeField] private GameObject _target = null;
     [SerializeField] private float _movementUpdateDelay = 0f;
+    [SerializeField] private float _targetStoppingDistance = 0f;
+    [SerializeField] private float _locationStoppingDistance = 0f;
+
+    private Vector3 _initialPosition = Vector3.zero;
 
     private NavMeshAgent _enemy = null;
     private bool _isInsideAggro = false;
@@ -29,41 +32,56 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        MoveUpdate(_movementUpdateDelay);
+        //MoveUpdate(_movementUpdateDelay);
 
         if (_isInsideAggro == true)
         {
-            EnemyMove(_target.transform.position);
+            SetDestination(_target.transform.position);
             //Debug.Log("Agrro'd.");
-
-            if (_isInsideThreshold == true)
-            {
-                //BACK AWAY FROM PLAYER.
-            }
-            else if (_isInsideThreshold == false)
-            {
-                _enemy.isStopped = true;
-                //NOW ATTACK PLAYER.
-            }
         }
         else if (_isInsideAggro == false)
         {
             _enemy.isStopped = true;
 
             //NOW GO BACK TO SPAWN POINT.
-            EnemyMove(_initialPosition);    
+            SetDestination(_initialPosition);    
 
             //Debug.Log("De-aggro'd.");
         }
+
+        /*if (_isInsideThreshold == true)
+        {
+            //BACK AWAY FROM PLAYER.
+            EnemyMove(GetFleeDirection());
+        }
+        else if (_isInsideThreshold == false)
+        {
+            //NOW ATTACK PLAYER.
+        }*/
+
+        if (_enemy.remainingDistance == 0)
+        {
+            _enemy.isStopped = true;
+        }
     }
 
-    private void EnemyMove(Vector3 destination)
+    private void SetDestination(Vector3 destination)
     {
         if (_moving == true)
         {
             _enemy.isStopped = false;
             _enemy.SetDestination(destination);
+            _enemy.transform.LookAt(destination);
             _moving = false;
+
+            if (_target.tag == "Player")
+            {
+                _enemy.stoppingDistance = _targetStoppingDistance;
+            }
+            else if (_target.tag != "Player")
+            {
+                _enemy.stoppingDistance = _locationStoppingDistance;
+            }
         }
     }
 
@@ -90,11 +108,11 @@ public class EnemyAI : MonoBehaviour
         _enemy.SetDestination(destination);
     }*/
 
-    private void KeepAttackRange(Vector3 targetPosition)
+    /*private void KeepAttackRange(Vector3 targetPosition)
     {
         gameObject.transform.LookAt(_initialPosition);
         _enemy.SetDestination(_initialPosition);
-    }
+    }*/
 
 
 
