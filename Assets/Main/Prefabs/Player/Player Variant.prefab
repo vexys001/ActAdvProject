@@ -101,11 +101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1583436079484602155, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017203536
+      value: -0.000000017950944
       objectReference: {fileID: 0}
     - target: {fileID: 1583436079484602155, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -3.1297526e-10
+      value: -3.2657246e-10
       objectReference: {fileID: 0}
     - target: {fileID: 1583436079484602156, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
@@ -166,6 +166,10 @@ PrefabInstance:
     - target: {fileID: 1583436081268691671, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
       value: 2.3865285
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760058479546563144, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5716864068405604074, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
       propertyPath: cam

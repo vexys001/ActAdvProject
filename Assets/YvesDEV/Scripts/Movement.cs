@@ -195,7 +195,7 @@ public class Movement : MonoBehaviour
         else _stack.transform.localPosition -= _topPogOffset;
 
         _col.size = new Vector3(1, 0.064f * _stack.pogCount, 1);
-        _slimeModel.transform.localPosition = new Vector3(0, 0.04f * _stack.pogCount, 0);
+        _slimeModel.transform.localPosition = new Vector3(0, 0.05f * _stack.pogCount, 0);
 
         bottomGO = _stack.lastPogGO;
     }
