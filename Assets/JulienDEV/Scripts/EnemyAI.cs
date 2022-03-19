@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private GameObject _target = null;
-    [SerializeField] private float _movementUpdateDelay = 0f;
+    //[SerializeField] private float _movementUpdateDelay = 0f;
     [SerializeField] private float _targetStoppingDistance = 0f;
     [SerializeField] private float _locationStoppingDistance = 0f;
 
@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour
 
     private NavMeshAgent _enemy = null;
     private bool _isInsideAggro = false;
-    private bool _isInsideThreshold = false;
+    //private bool _isInsideThreshold = false;
 
     private bool _moving = false;
 
@@ -149,13 +149,13 @@ public class EnemyAI : MonoBehaviour
 
     public void IsInThreshold()
     {
-        _isInsideThreshold = true;
+        //_isInsideThreshold = true;
         _moving = true;
     }
 
     public void NotInThreshold()
     {
-        _isInsideThreshold = false;
+        //_isInsideThreshold = false;
         _moving = false;
     }
 
