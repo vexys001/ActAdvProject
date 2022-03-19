@@ -161,6 +161,7 @@ public class Pog : MonoBehaviour
     void StartShoot()
     {
         transform.SetParent(null);
+        transform.localScale = Vector3.one;
         _currentState = "isShooting";
 
         Invoke("DelayActivateCollider", 0.1f);
