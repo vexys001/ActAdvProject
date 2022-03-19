@@ -20,6 +20,7 @@ public class Pog : MonoBehaviour
     [Header("Info Vars")]
     [SerializeField] private PogScriptableObject PogSO;
     public bool IsKey;
+    public SystemEnums.KeyColors KeyColor;
 
     public SystemEnums.Partys belongsTo;
 
@@ -34,7 +35,11 @@ public class Pog : MonoBehaviour
         if (!IsKey)
         {
             PogSO = RandomPogPicker.Instance.RandomNormalPogSO();
-            ApplyScriptable();
+            ApplyNormalScriptable();
+        }
+        else
+        {
+            ApplyKeyScriptable();
         }
 
         if (StandBy)
@@ -46,13 +51,20 @@ public class Pog : MonoBehaviour
     public void SetScriptable(PogScriptableObject SO)
     {
         PogSO = SO;
-        ApplyScriptable();
+        ApplyNormalScriptable();
     }
 
-    public void ApplyScriptable()
+    public void ApplyNormalScriptable()
     {
         IsKey = PogSO.IsKey;
         itself.GetComponent<MeshRenderer>().material = PogSO.Material;
+    }
+
+    public void ApplyKeyScriptable()
+    {
+        IsKey = PogSO.IsKey;
+        KeyColor = PogSO.KeyColor;
+        //itself.GetComponent<MeshRenderer>().material = PogSO.Material;
     }
 
     private void DelayActivateCollider()

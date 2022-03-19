@@ -7,4 +7,5 @@ public class PogScriptableObject : ScriptableObject
 {
     public bool IsKey;
     public Material Material;
+    public SystemEnums.KeyColors KeyColor;
 }

@@ -6,4 +6,5 @@ public class SystemEnums
 {
     // Start is called before the first frame update
     public enum Partys { None, Ally, Enemy }
+    public enum KeyColors { None, Red, Green, Blue }
 }
