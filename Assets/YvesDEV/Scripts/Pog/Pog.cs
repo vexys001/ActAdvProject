@@ -11,6 +11,7 @@ public class Pog : MonoBehaviour
     private Collider _collider;
     private Rigidbody _rb;
     public GameObject itself, stack;
+    public AudioSource letoc;
 
     [Header("Shooting Vars")]
     public float Speed = 10f;
@@ -214,6 +215,7 @@ public class Pog : MonoBehaviour
     {
         if (belongsTo == SystemEnums.Partys.Ally && !collision.gameObject.CompareTag("Player"))
         {
+            letoc.Play();
             if (_currentState == "isShooting")
             {
                 CancelInvoke("EndShoot");

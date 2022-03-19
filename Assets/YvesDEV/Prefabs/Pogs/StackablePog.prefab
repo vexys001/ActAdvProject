@@ -45,8 +45,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 8e553108744a2b24799b120652c6cc7d, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   _collider: {fileID: 2612992383993716654}
   itself: {fileID: 4707183599525855253}
   stack: {fileID: 0}
+  letoc: {fileID: 7198045948754082450}
   Speed: 10
   Lifespan: 3
   PogSO: {fileID: 11400000, guid: ec55d5490c7eb1d49bd809344d4cc277, type: 2}

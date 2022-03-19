@@ -146,10 +146,11 @@ public class Movement : MonoBehaviour
             Move();
             Debug.Log(_rb.velocity.y);
 
-            if (hasJumped && _rb.velocity.y <= 0) goingDown = true;
+            if (hasJumped && _rb.velocity.y <= -1) goingDown = true;
 
-            if (hasJumped && goingDown && _rb.velocity.y == 0) { 
-                hasJumped = false; 
+            if (hasJumped && goingDown && _rb.velocity.y > -1) { 
+                hasJumped = false;
+                leson.PlayOneShot(Landing);
             }
 
             if (Input.GetKeyDown(KeyCode.Space) && !hasJumped) Jump();
