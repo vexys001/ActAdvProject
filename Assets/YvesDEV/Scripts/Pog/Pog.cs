@@ -46,6 +46,8 @@ public class Pog : MonoBehaviour
         {
             StartDropped();
         }
+
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void SetScriptable(PogScriptableObject SO)

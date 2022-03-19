@@ -459,12 +459,10 @@ MonoBehaviour:
   thirdPersonCamera: {fileID: 914726801366053624}
   aimCamera: {fileID: 0}
   theCursor: {fileID: 0}
-  Shooting: {fileID: 8300000, guid: 78eb8fe8975d3ac40a71b01461792512, type: 3}
-  Jumping: {fileID: 8300000, guid: daeda0795c64e644a81443940a4ecf5f, type: 3}
-  Landing: {fileID: 8300000, guid: 78ade2ec19f1ea24f9603abbc517f391, type: 3}
-  leson: {fileID: 0}
+  ShootingAClip: {fileID: 8300000, guid: 78eb8fe8975d3ac40a71b01461792512, type: 3}
+  JumpingAClip: {fileID: 8300000, guid: daeda0795c64e644a81443940a4ecf5f, type: 3}
+  LandingAClip: {fileID: 8300000, guid: 78ade2ec19f1ea24f9603abbc517f391, type: 3}
   DEBUG: 0
-  _audioSource: {fileID: 0}
 --- !u!82 &1761319979267794501
 AudioSource:
   m_ObjectHideFlags: 0

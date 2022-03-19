@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 914726800603988706, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
       propertyPath: m_Name
-      value: PlayerYves Variant
+      value: Player Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1583436079211235012, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -101,11 +101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1583436079484602155, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017950944
+      value: -0.000000017203536
       objectReference: {fileID: 0}
     - target: {fileID: 1583436079484602155, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -3.2657246e-10
+      value: -3.1297526e-10
       objectReference: {fileID: 0}
     - target: {fileID: 1583436079484602156, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
@@ -121,7 +121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1583436080295193690, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1583436080295193690, guid: 995be7d864e7e324abb43d68e9485cac, type: 3}
       propertyPath: m_LocalPosition.y
