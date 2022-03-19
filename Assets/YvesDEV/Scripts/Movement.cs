@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     BoxCollider _col;
     StackObject _stack;
     public GameObject _stackHolder;
+    public GameObject _slimeModel;
     private Vector3 _topPogOffset;
 
     [SerializeField]
@@ -196,6 +197,8 @@ public class Movement : MonoBehaviour
         else _stack.transform.localPosition -= _topPogOffset;
 
         _col.size = new Vector3(1, 0.064f * _stack.pogCount, 1);
+        _slimeModel.transform.localPosition = new Vector3(0, 0.035f * _stack.pogCount, 0);
+
         bottomGO = _stack.lastPogGO;
     }
 
