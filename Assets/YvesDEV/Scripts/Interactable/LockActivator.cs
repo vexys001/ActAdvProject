@@ -6,17 +6,22 @@ public class LockActivator : Activator
 {
     [SerializeField] private SystemEnums.KeyColors _requiredColor;
 
+    private void Awake()
+    {
+        
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-
         if (collision.gameObject.tag == _colliderTag)
         {
-            Pog pogObject = collision.gameObject.GetComponentInChildren<Pog>();
+            Debug.Log($"This pog {collision.gameObject.name} collided with the lock");
+            Pog pogObject = collision.gameObject.GetComponentInParent<Pog>();
             if(pogObject.KeyColor == _requiredColor)
             {
                 //OnOff();
                 Destroy(gameObject);
+                //_target.SendMessage("RemovedLock");
             }
         }
     }

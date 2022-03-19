@@ -40,14 +40,14 @@ public class Activator : MonoBehaviour
                 }
                 break;
             */
-            case _modes.buttonSelfDestruct:
+            /*case _modes.buttonSelfDestruct:
                 if (collision.gameObject.tag == _colliderTag)
                 {
                     OnOff();
                     Destroy(gameObject);
                 }
                 break;
-
+            */
             /*case _modes.pressurePlate:
                 //
                 break;*/
@@ -67,7 +67,7 @@ public class Activator : MonoBehaviour
             case _modes.buttonOneShot:
                 //
                 break;
-            */
+            
             case _modes.buttonSelfDestruct:
                 //
                 break;
@@ -94,7 +94,7 @@ public class Activator : MonoBehaviour
             case _modes.buttonOneShot:
                 //
                 break;
-*/
+
             case _modes.buttonSelfDestruct:
                 //
                 break;
