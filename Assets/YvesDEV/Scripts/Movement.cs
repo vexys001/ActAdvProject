@@ -34,15 +34,13 @@ public class Movement : MonoBehaviour
     public GameObject aimCamera;
     public GameObject theCursor;
     [Header("Sounds")]
-    public AudioClip Shooting;
-    public AudioClip Jumping;
-    public AudioClip Landing;
-    public AudioSource leson;
+    public AudioClip ShootingAClip;
+    public AudioClip JumpingAClip;
+    public AudioClip LandingAClip;
+    private AudioSource _audioSource;
 
     [Header("Debugging")]
     public bool DEBUG;
-
-    public AudioSource _audioSource;
 
     private void Start()
     {
@@ -50,7 +48,7 @@ public class Movement : MonoBehaviour
         _col = GetComponent<BoxCollider>();
         _stack = GetComponentInChildren<StackObject>();
 
-        bottomGO = _stack.lastPogGO;
+        //bottomGO = _stack.lastPogGO;
 
         _topPogOffset = new Vector3(0, 0.032f, 0);
 
@@ -59,7 +57,7 @@ public class Movement : MonoBehaviour
         thirdPersonCamera.SetActive(true);
         aimCamera.SetActive(false);
         theCursor.SetActive(false);
-        leson = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -87,7 +85,7 @@ public class Movement : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1") && _stack.pogCount > 1)
             {
-                leson.PlayOneShot(Shooting);
+                _audioSource.PlayOneShot(ShootingAClip);
                 _stackHolder.SendMessage("ShootPog");
                 ChangeCollider(false);
             }
@@ -117,7 +115,7 @@ public class Movement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                leson.PlayOneShot(Shooting);
+                _audioSource.PlayOneShot(ShootingAClip);
                 _stackHolder.SendMessage("ShootPog");
                 ChangeCollider(false);
             }
@@ -125,12 +123,12 @@ public class Movement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 _stackHolder.SendMessage("ShieldPog");
-                leson.PlayOneShot(Shooting);
+                _audioSource.PlayOneShot(ShootingAClip);
                 ChangeCollider(false);
             }
             if (Input.GetKeyDown(KeyCode.Y))
             {
-                leson.PlayOneShot(Landing);
+                _audioSource.PlayOneShot(LandingAClip);
                 _stackHolder.SendMessage("DropPog", StackObject.Positions.Top);
                 ChangeCollider(false);
             }
@@ -150,7 +148,7 @@ public class Movement : MonoBehaviour
 
             if (hasJumped && goingDown && _rb.velocity.y > -1) { 
                 hasJumped = false;
-                leson.PlayOneShot(Landing);
+                _audioSource.PlayOneShot(LandingAClip);
             }
 
             if (Input.GetKeyDown(KeyCode.Space) && !hasJumped) Jump();
@@ -182,7 +180,7 @@ public class Movement : MonoBehaviour
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         _stackHolder.SendMessage("AnimateStack", StackObject.AnimClips.Jump);
         Invoke("DelayJump", 0.1f);
-        leson.PlayOneShot(Jumping);
+        _audioSource.PlayOneShot(JumpingAClip);
     }
 
     private void DelayJump()
@@ -204,10 +202,7 @@ public class Movement : MonoBehaviour
 
     private RaycastHit[] FindGround()
     {
-        //return Physics.OverlapSphere(bottomGO.transform.localPosition, 1f, groundMask);
         return Physics.RaycastAll(bottomGO.transform.position, Vector3.down / 20, groundMask);
-        //return Physics.BoxCastAll((bottomGO.transform.position, new Vector3(0.5f, 0.5f, 0.5f), Vector3.down, groundMask);
-        //return Physics.BoxCastAll(bottomGO.transform.position, new Vector3(0.5f, 0.5f, 0.5f), Vector3.down, Quaternion.identity,0.1f, groundMask); 
     }
 
     private void OnTriggerEnter(Collider other)

@@ -11,7 +11,7 @@ public class Pog : MonoBehaviour
     private Collider _collider;
     private Rigidbody _rb;
     public GameObject itself, stack;
-    public AudioSource letoc;
+    public AudioSource _audioSource;
 
     [Header("Shooting Vars")]
     public float Speed = 10f;
@@ -22,7 +22,6 @@ public class Pog : MonoBehaviour
     [SerializeField] private PogScriptableObject PogSO;
     public bool IsKey;
     public SystemEnums.KeyColors KeyColor;
-
     public SystemEnums.Partys belongsTo;
 
     // Start is called before the first frame update
@@ -216,7 +215,7 @@ public class Pog : MonoBehaviour
     {
         if (belongsTo == SystemEnums.Partys.Ally && !collision.gameObject.CompareTag("Player"))
         {
-            letoc.Play();
+            _audioSource.Play();
             if (_currentState == "isShooting")
             {
                 CancelInvoke("EndShoot");
