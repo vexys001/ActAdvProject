@@ -208,6 +208,8 @@ public class Pog : MonoBehaviour
         _currentState = "none";
     }
 
+    #endregion
+
     private void CollisionDetected(Collision collision)
     {
         if (belongsTo == SystemEnums.Partys.Ally && !collision.gameObject.CompareTag("Player"))
@@ -224,5 +226,4 @@ public class Pog : MonoBehaviour
             }
         }
     }
-    #endregion
 }
