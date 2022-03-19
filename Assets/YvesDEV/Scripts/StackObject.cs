@@ -9,6 +9,7 @@ public class StackObject : MonoBehaviour
     public int pogCount;
     public GameObject firstPogGO, lastPogGO;
 
+
     [Header("Removal Specific")]
     public int ncountrdNonRemovblPogs;
     public enum Positions { Top, Middle, Bottom }
@@ -32,14 +33,24 @@ public class StackObject : MonoBehaviour
     {
         switch (clipToPlay)
         {
+            case AnimClips.Jump:
+                _animator.SetBool("Isjumping", true);
+                _animator.SetBool("Isrunning", false);
+                _animator.SetBool("Isidle", false);
+                //Debug.Log("Jumping Stack");
+                break;
             case AnimClips.Idle:
+                _animator.SetBool("Isidle", true);
+                _animator.SetBool("Isrunning", false);
+                _animator.SetBool("Isjumping", false);
+
                 //Debug.Log("Idling Stack");
                 break;
             case AnimClips.Walk:
+                _animator.SetBool("Isrunning", true);
+                _animator.SetBool("Isidle", false);
+                _animator.SetBool("Isjumping", false);
                 //Debug.Log("Walking Stack");
-                break;
-            case AnimClips.Jump:
-                //Debug.Log("Jumping Stack");
                 break;
         }
     }
