@@ -18,10 +18,12 @@ public class AI_Base : MonoBehaviour
     [SerializeField] private bool _playerInFleeDistance = false;
     [SerializeField] private float _fleeDistance = 0f;
 
-    private enum _states {idle, chase, flee};
+    private enum _states { idle, chase, flee };
     private _states _States = _states.idle;
 
     private bool _inCombat = false;
+    private float _whenToAttack = 0;
+    [SerializeField] private float _attackTimer = 5f;
 
     [SerializeField] GameObject _stackHolder = null;
     private StackObject _stackObject = null;
@@ -45,7 +47,7 @@ public class AI_Base : MonoBehaviour
     {
         //Test
         TestPog();
-        Attack();
+        //Attack();
         //
 
         _playerInSightRange = Physics.CheckSphere(transform.position, _sightRange, _whatIsPlayer);
@@ -96,7 +98,9 @@ public class AI_Base : MonoBehaviour
         if (_States == _states.chase)
         {
             _inCombat = true;
+            _whenToAttack += Time.deltaTime;
             GoTo(_player.position);
+            if (_agent.velocity.magnitude <= 0.15f && _stackObject.pogCount > 1 && _whenToAttack > _attackTimer) Attack();
         }
     }
 
@@ -121,14 +125,15 @@ public class AI_Base : MonoBehaviour
 
     private void Attack()
     {
-        /*_stackHolder.SendMessage("ShootPog");
-        ChangeCollider(true);*/
+        _whenToAttack = 0;
+        _stackHolder.SendMessage("ShootPog");
+        ChangeCollider(true);
 
-        if (Input.GetKeyDown(KeyCode.Alpha9) && _stackObject.pogCount > 1)
+        /*if (Input.GetKeyDown(KeyCode.Alpha9) && _stackObject.pogCount > 1)
         {
             _stackHolder.SendMessage("ShootPog");
             ChangeCollider(true);
-        }
+        }*/
     }
 
     private void ChangeCollider(bool remove)
