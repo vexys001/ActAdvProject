@@ -14,8 +14,8 @@ public class Activator : MonoBehaviour
 
     private void Awake()
     {
-        _objectRenderer = gameObject.GetComponent<Renderer>();
-        _objectRenderer.material.color = _objectColor;
+        //_objectRenderer = gameObject.GetComponent<Renderer>();
+        //_objectRenderer.material.color = _objectColor;
     }
 
     protected void OnOff()
@@ -23,12 +23,12 @@ public class Activator : MonoBehaviour
         if (_target.activeSelf == true)
         {
             _target.SetActive(false);
-            _objectRenderer.material.color = _pressedObjectColor;
+            //_objectRenderer.material.color = _pressedObjectColor;
         }
         else if (_target.activeSelf == false)
         {
             _target.SetActive(true);
-            _objectRenderer.material.color = _objectColor;
+            //_objectRenderer.material.color = _objectColor;
         }
     }
 
