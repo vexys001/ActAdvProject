@@ -33,11 +33,15 @@ public class Movement : MonoBehaviour
     public GameObject thirdPersonCamera;
     public GameObject aimCamera;
     public GameObject theCursor;
+
     [Header("Sounds")]
     public AudioClip ShootingAClip;
     public AudioClip JumpingAClip;
     public AudioClip LandingAClip;
     private AudioSource _audioSource;
+
+    [Header("Other")]
+    private Vector3 _respawnPosition;
 
     [Header("Debugging")]
     public bool DEBUG;
@@ -58,6 +62,8 @@ public class Movement : MonoBehaviour
         aimCamera.SetActive(false);
         theCursor.SetActive(false);
         _audioSource = GetComponent<AudioSource>();
+
+        _respawnPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -205,6 +211,11 @@ public class Movement : MonoBehaviour
         return Physics.RaycastAll(bottomGO.transform.position, Vector3.down / 20, groundMask);
     }
 
+    private void Respawn()
+    {
+        transform.position = _respawnPosition;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("HeightChecker"))
@@ -215,6 +226,10 @@ public class Movement : MonoBehaviour
                 int toRemove = _stack.pogCount - maxHeight;
                 _stackHolder.SendMessage("RemoveXNonKeys", toRemove);
             }
+        }
+        else if (other.CompareTag("OutofBounds"))
+        {
+            Respawn();
         }
     }
 
