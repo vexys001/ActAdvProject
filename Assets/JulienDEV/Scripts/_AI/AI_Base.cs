@@ -38,7 +38,7 @@ public class AI_Base : MonoBehaviour
 
     private void Start()
     {
-        //ChangeCollider(false);
+        for(int i = 1; i < _stackObject.pogCount; i++) ChangeCollider(false);
     }
 
     private void Update()
