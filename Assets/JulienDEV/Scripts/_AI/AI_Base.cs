@@ -43,6 +43,11 @@ public class AI_Base : MonoBehaviour
 
     private void Update()
     {
+        //Test
+        TestPog();
+        Attack();
+        //
+
         _playerInSightRange = Physics.CheckSphere(transform.position, _sightRange, _whatIsPlayer);
         _playerInFleeDistance = Physics.CheckSphere(transform.position, _fleeDistance, _whatIsPlayer);
 
@@ -116,15 +121,29 @@ public class AI_Base : MonoBehaviour
 
     private void Attack()
     {
-        _stackHolder.SendMessage("ShootPog");
-        ChangeCollider(false);
+        /*_stackHolder.SendMessage("ShootPog");
+        ChangeCollider(true);*/
+
+        if (Input.GetKeyDown(KeyCode.Alpha9) && _stackObject.pogCount > 1)
+        {
+            _stackHolder.SendMessage("ShootPog");
+            ChangeCollider(false);
+        }
     }
 
     private void ChangeCollider(bool removeFromMiddle)
     {
         //_col.center += Vector3.down * 0.05f;
-        if (!removeFromMiddle) _stackObject.transform.localPosition += new Vector3(0, 0.032f, 0);
-        else _stackObject.transform.localPosition -= new Vector3(0, 0.032f, 0);
+        if (!removeFromMiddle)
+        {
+            _stackObject.transform.localPosition += new Vector3(0, 0.032f, 0);
+            _agent.baseOffset += 0.032f;
+        }
+        else
+        {
+            //_stackObject.transform.localPosition -= new Vector3(0, 0.032f, 0);
+            _agent.baseOffset -= 0.032f;
+        }
 
         _col.size = new Vector3(1, 0.064f * _stackObject.pogCount, 1);
         //_slimeModel.transform.localPosition = new Vector3(0, 0.05f * _stack.pogCount, 0);
@@ -132,6 +151,15 @@ public class AI_Base : MonoBehaviour
         //bottomGO = _stack.lastPogGO;
 
         _agent.height = 0.064f * _stackObject.pogCount;
+    }
+
+    private void TestPog()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            _stackHolder.SendMessage("TempAddPog");
+            ChangeCollider(false);
+        }
     }
 
     public void AggroPull()
