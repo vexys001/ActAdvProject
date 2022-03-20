@@ -29,6 +29,8 @@ public class AI_Base : MonoBehaviour
     private StackObject _stackObject = null;
     private BoxCollider _col = null;
 
+    [SerializeField] GameObject _slimeModel = null;
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -151,7 +153,7 @@ public class AI_Base : MonoBehaviour
         }
 
         _col.size = new Vector3(1, 0.064f * _stackObject.pogCount, 1);
-        //_slimeModel.transform.localPosition = new Vector3(0, 0.05f * _stack.pogCount, 0);
+        _slimeModel.transform.localPosition = new Vector3(0, 0.05f * _stackObject.pogCount, 0);
 
         //bottomGO = _stack.lastPogGO;
 
