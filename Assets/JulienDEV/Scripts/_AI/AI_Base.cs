@@ -98,7 +98,9 @@ public class AI_Base : MonoBehaviour
         if (_States == _states.chase)
         {
             _inCombat = true;
+            _whenToAttack += Time.deltaTime;
             GoTo(_player.position);
+            if (_agent.velocity.magnitude <= 0.15f && _stackObject.pogCount > 1 && _whenToAttack > _attackTimer) Attack();
         }
     }
 
