@@ -38,7 +38,7 @@ public class AI_Base : MonoBehaviour
 
     private void Start()
     {
-        ChangeCollider(false);
+        //ChangeCollider(false);
     }
 
     private void Update()
@@ -127,21 +127,21 @@ public class AI_Base : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha9) && _stackObject.pogCount > 1)
         {
             _stackHolder.SendMessage("ShootPog");
-            ChangeCollider(false);
+            ChangeCollider(true);
         }
     }
 
-    private void ChangeCollider(bool removeFromMiddle)
+    private void ChangeCollider(bool remove)
     {
         //_col.center += Vector3.down * 0.05f;
-        if (!removeFromMiddle)
+        if (!remove)
         {
             _stackObject.transform.localPosition += new Vector3(0, 0.032f, 0);
             _agent.baseOffset += 0.032f;
         }
         else
         {
-            //_stackObject.transform.localPosition -= new Vector3(0, 0.032f, 0);
+            _stackObject.transform.localPosition += new Vector3(0, 0.032f, 0);
             _agent.baseOffset -= 0.032f;
         }
 
@@ -150,7 +150,7 @@ public class AI_Base : MonoBehaviour
 
         //bottomGO = _stack.lastPogGO;
 
-        _agent.height = 0.064f * _stackObject.pogCount;
+        //_agent.height = 0.064f * _stackObject.pogCount;
     }
 
     private void TestPog()
