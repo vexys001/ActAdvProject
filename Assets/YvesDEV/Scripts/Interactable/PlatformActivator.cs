@@ -17,6 +17,6 @@ public class PlatformActivator : Activator
     private void ActivatePlatform()
     {
         _target.SendMessage("ActivatePlat");
-        _objectRenderer.material.color = _pressedObjectColor;
+        _objectRenderer.material = _pressedObjectMaterial;
     }
 }
