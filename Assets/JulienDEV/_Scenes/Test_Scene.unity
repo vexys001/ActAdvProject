@@ -264,7 +264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6333c926b8fc4de49b8eb9441830031b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Modes: 0
   _target: {fileID: 2016256588}
   _objectColor: {r: 0, g: 1, b: 0, a: 1}
   _pressedObjectColor: {r: 1, g: 0, b: 0, a: 1}
@@ -767,6 +766,8 @@ MonoBehaviour:
     m_Bits: 2048
   _targetStoppingDistance: 10
   _locationStoppingDistance: 0.1
+  _playerInFleeDistance: 0
+  _fleeDistance: 8
 --- !u!195 &480525250
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -900,7 +901,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6333c926b8fc4de49b8eb9441830031b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Modes: 2
   _target: {fileID: 2016256588}
   _objectColor: {r: 0, g: 1, b: 0, a: 1}
   _pressedObjectColor: {r: 1, g: 0, b: 0, a: 1}
