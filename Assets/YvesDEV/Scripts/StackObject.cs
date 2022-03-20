@@ -18,7 +18,6 @@ public class StackObject : MonoBehaviour
     [SerializeField] private Animator _animator;
     public enum AnimClips { Idle, Walk, Jump}
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +58,7 @@ public class StackObject : MonoBehaviour
     void TempAddPog()
     {
         pogCount++;
+        Debug.Log("Add a temp pog");
         lastPogGO = Instantiate(samplePog, lastPogGO.transform.GetChild(0));
         lastPogGO.GetComponent<Pog>().SetScriptable(PogDatas[0]);
         lastPogGO.GetComponent<Pog>().SetBelong(SystemEnums.Partys.Ally);
