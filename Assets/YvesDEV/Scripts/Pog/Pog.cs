@@ -84,7 +84,6 @@ public class Pog : MonoBehaviour
     #region Utility
     void EnableGravity()
     {
-        Debug.Log("Unable Gravity");
         _rb.useGravity = true;
         _rb.constraints = RigidbodyConstraints.None;
         _rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -113,19 +112,25 @@ public class Pog : MonoBehaviour
 
     private void CollisionDetected(Collision collision)
     {
-        if (belongsTo == SystemEnums.Partys.Ally && !collision.gameObject.CompareTag("Player"))
+        if (belongsTo == SystemEnums.Partys.Ally && !collision.gameObject.CompareTag("Player")
+            || belongsTo == SystemEnums.Partys.Enemy && !collision.gameObject.CompareTag("Enemy"))
         {
             _audioSource.Play();
-            if (_currentState == "isShooting")
+            if (belongsTo == SystemEnums.Partys.Ally && !collision.gameObject.CompareTag("Enemy")
+                || belongsTo == SystemEnums.Partys.Enemy && !collision.gameObject.CompareTag("Player"))
             {
-                CancelInvoke("EndShoot");
-                EndShoot();
+                if (_currentState == "isShooting")
+                {
+                    CancelInvoke("EndShoot");
+                    EndShoot();
+                }
+                if (_currentState == "isShielding")
+                {
+                    CancelInvoke("EndShield");
+                    StartDropped();
+                }
             }
-            if (_currentState == "isShielding")
-            {
-                CancelInvoke("EndShield");
-                StartDropped();
-            }
+
         }
     }
     #endregion
@@ -159,7 +164,6 @@ public class Pog : MonoBehaviour
     #region Dropped State
     void StartDropped()
     {
-        Debug.Log("Dropping pog");
         transform.SetParent(null);
         _currentState = "Dropped";
         belongsTo = SystemEnums.Partys.None;

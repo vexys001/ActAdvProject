@@ -98,9 +98,7 @@ public class AI_Base : MonoBehaviour
         if (_States == _states.chase)
         {
             _inCombat = true;
-            _whenToAttack += Time.deltaTime;
             GoTo(_player.position);
-            if (_agent.velocity.magnitude <= 0.15f && _stackObject.pogCount > 1 && _whenToAttack > _attackTimer) Attack();
         }
     }
 
@@ -173,6 +171,35 @@ public class AI_Base : MonoBehaviour
         {
             _States = _states.chase;
             Debug.Log("AggroPull");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+        if (collision.gameObject.CompareTag("Pog"))
+        {
+            Debug.Log("-----------");
+            Debug.Log("Hit by a pog");
+            Pog collidedPog = collision.gameObject.transform.parent.GetComponent<Pog>();
+            if (collidedPog.GetState().Equals("isShooting") || collidedPog.GetState().Equals("isShielding"))
+            {
+                if (collidedPog.belongsTo == SystemEnums.Partys.Ally)
+                {
+                    Debug.Log("Ouchie!");
+                    if (_stackObject.pogCount > 1)
+                    {
+                        Debug.Log("Oh no i dropped my patatoes");
+                        _stackHolder.SendMessage("DropPog", StackObject.Positions.Top);
+                        ChangeCollider(true);
+                    }
+                    else
+                    {
+                        Debug.Log("I die");
+                        Destroy(gameObject);
+                    }
+                }
+            }
         }
     }
 }

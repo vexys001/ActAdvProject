@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pog
   - HeightChecker
+  - Enemy
   layers:
   - Default
   - TransparentFX
