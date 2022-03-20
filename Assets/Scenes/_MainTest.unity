@@ -9629,7 +9629,7 @@ GameObject:
   - component: {fileID: 191170145}
   - component: {fileID: 191170144}
   m_Layer: 10
-  m_Name: Cube.001 (3)
+  m_Name: invisfloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39513,7 +39513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1702145513098244209, guid: 1a1f7c583afdef84d8f3ac10455ba34c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1e-45
+      value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 1702145513098244209, guid: 1a1f7c583afdef84d8f3ac10455ba34c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -68388,7 +68388,7 @@ GameObject:
   - component: {fileID: 1374844538}
   - component: {fileID: 1374844537}
   m_Layer: 10
-  m_Name: Cube.001 (2)
+  m_Name: invisfloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79924,7 +79924,7 @@ GameObject:
   - component: {fileID: 1726112194}
   - component: {fileID: 1726112192}
   m_Layer: 10
-  m_Name: Cube.001 (1)
+  m_Name: invisfloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
