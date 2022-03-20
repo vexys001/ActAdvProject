@@ -24,7 +24,7 @@ public class StackObject : MonoBehaviour
     {
         firstPogGO = this.transform.GetChild(0).gameObject;
         lastPogGO = firstPogGO;
-        pogCount = GetComponentsInParent<Pog>().Length;
+        pogCount = GetComponentsInChildren<Pog>().Length;
 
         _animator = GetComponent<Animator>();
     }
