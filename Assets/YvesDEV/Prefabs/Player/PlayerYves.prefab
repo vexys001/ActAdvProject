@@ -459,12 +459,10 @@ MonoBehaviour:
   thirdPersonCamera: {fileID: 914726801366053624}
   aimCamera: {fileID: 0}
   theCursor: {fileID: 0}
-  Shooting: {fileID: 8300000, guid: 78eb8fe8975d3ac40a71b01461792512, type: 3}
-  Jumping: {fileID: 8300000, guid: daeda0795c64e644a81443940a4ecf5f, type: 3}
-  Landing: {fileID: 8300000, guid: 78ade2ec19f1ea24f9603abbc517f391, type: 3}
-  leson: {fileID: 0}
+  ShootingAClip: {fileID: 8300000, guid: 78eb8fe8975d3ac40a71b01461792512, type: 3}
+  JumpingAClip: {fileID: 8300000, guid: daeda0795c64e644a81443940a4ecf5f, type: 3}
+  LandingAClip: {fileID: 8300000, guid: 78ade2ec19f1ea24f9603abbc517f391, type: 3}
   DEBUG: 0
-  _audioSource: {fileID: 0}
 --- !u!82 &1761319979267794501
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1116,7 +1114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9125914903774207108}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.25, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1223,7 +1221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4782616520053772713, guid: 807bf0fad9f674e46ad25dc8a6f35fa9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.04
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4782616520053772713, guid: 807bf0fad9f674e46ad25dc8a6f35fa9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1326,7 +1324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4828303924331731574, guid: 702057d668f0bc64d9539f017c030db9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4828303924331731574, guid: 702057d668f0bc64d9539f017c030db9, type: 3}
       propertyPath: m_LocalPosition.y

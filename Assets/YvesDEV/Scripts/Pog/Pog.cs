@@ -11,7 +11,7 @@ public class Pog : MonoBehaviour
     private Collider _collider;
     private Rigidbody _rb;
     public GameObject itself, stack;
-    public AudioSource letoc;
+    public AudioSource _audioSource;
 
     [Header("Shooting Vars")]
     public float Speed = 10f;
@@ -22,7 +22,6 @@ public class Pog : MonoBehaviour
     [SerializeField] private PogScriptableObject PogSO;
     public bool IsKey;
     public SystemEnums.KeyColors KeyColor;
-
     public SystemEnums.Partys belongsTo;
 
     // Start is called before the first frame update
@@ -47,6 +46,8 @@ public class Pog : MonoBehaviour
         {
             StartDropped();
         }
+
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void SetScriptable(PogScriptableObject SO)
@@ -93,6 +94,11 @@ public class Pog : MonoBehaviour
         _rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 
+    void PushBack()
+    {
+
+    }
+
     public string GetState()
     {
         return _currentState;
@@ -101,6 +107,24 @@ public class Pog : MonoBehaviour
     public void SetBelong(SystemEnums.Partys newBelong)
     {
         belongsTo = newBelong;
+    }
+
+    private void CollisionDetected(Collision collision)
+    {
+        if (belongsTo == SystemEnums.Partys.Ally && !collision.gameObject.CompareTag("Player"))
+        {
+            _audioSource.Play();
+            if (_currentState == "isShooting")
+            {
+                CancelInvoke("EndShoot");
+                EndShoot();
+            }
+            if (_currentState == "isShielding")
+            {
+                CancelInvoke("EndShield");
+                StartDropped();
+            }
+        }
     }
     #endregion
 
@@ -211,22 +235,4 @@ public class Pog : MonoBehaviour
     }
 
     #endregion
-
-    private void CollisionDetected(Collision collision)
-    {
-        if (belongsTo == SystemEnums.Partys.Ally && !collision.gameObject.CompareTag("Player"))
-        {
-            letoc.Play();
-            if (_currentState == "isShooting")
-            {
-                CancelInvoke("EndShoot");
-                EndShoot();
-            }
-            if (_currentState == "isShielding")
-            {
-                CancelInvoke("EndShield");
-                StartDropped();
-            }
-        }
-    }
 }
