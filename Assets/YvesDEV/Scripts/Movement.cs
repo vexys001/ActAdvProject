@@ -102,7 +102,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+
     }
 
     private void Inputs()
@@ -152,7 +152,8 @@ public class Movement : MonoBehaviour
 
             if (hasJumped && _rb.velocity.y <= -1) goingDown = true;
 
-            if (hasJumped && goingDown && _rb.velocity.y > -1) { 
+            if (hasJumped && goingDown && _rb.velocity.y > -1)
+            {
                 hasJumped = false;
                 _audioSource.PlayOneShot(LandingAClip);
             }
@@ -247,8 +248,12 @@ public class Movement : MonoBehaviour
             {
                 if (collidedPog.belongsTo == SystemEnums.Partys.Enemy)
                 {
-                    _stackHolder.SendMessage("DropPog", StackObject.Positions.Top);
-                    ChangeCollider(false);
+                    if (_stack.pogCount > 1)
+                    {
+                        _stackHolder.SendMessage("DropPog", StackObject.Positions.Top);
+                        ChangeCollider(false);
+                    }
+                    else Respawn();
                 }
             }
         }

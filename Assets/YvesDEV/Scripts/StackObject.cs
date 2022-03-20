@@ -87,6 +87,8 @@ public class StackObject : MonoBehaviour
 
         lastPogGO.transform.localRotation = temp.localRotation;
         lastPogGO.transform.localPosition = Vector3.zero;
+
+        lastPogGO.GetComponent<Pog>().SetBelong(SystemEnums.Partys.Ally);
     }
 
     #endregion

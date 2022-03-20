@@ -9,6 +9,7 @@ public class Pog : MonoBehaviour
     public bool StandBy;
     [SerializeField]
     private Collider _collider;
+    [SerializeField]
     private Rigidbody _rb;
     public GameObject itself, stack;
     public AudioSource _audioSource;
@@ -29,8 +30,8 @@ public class Pog : MonoBehaviour
     {
         _currentState = "none";
 
-        _collider = GetComponentInChildren<Collider>();
-        _rb = GetComponentInChildren<Rigidbody>();
+        _collider = transform.GetChild(1).GetComponent<Collider>();
+        _rb = transform.GetChild(1).GetComponent<Rigidbody>();
 
         if (!IsKey)
         {
@@ -111,19 +112,25 @@ public class Pog : MonoBehaviour
 
     private void CollisionDetected(Collision collision)
     {
-        if (belongsTo == SystemEnums.Partys.Ally && !collision.gameObject.CompareTag("Player"))
+        if (belongsTo == SystemEnums.Partys.Ally && !collision.gameObject.CompareTag("Player")
+            || belongsTo == SystemEnums.Partys.Enemy && !collision.gameObject.CompareTag("Enemy"))
         {
             _audioSource.Play();
-            if (_currentState == "isShooting")
+            if (belongsTo == SystemEnums.Partys.Ally && !collision.gameObject.CompareTag("Enemy")
+                || belongsTo == SystemEnums.Partys.Enemy && !collision.gameObject.CompareTag("Player"))
             {
-                CancelInvoke("EndShoot");
-                EndShoot();
+                if (_currentState == "isShooting")
+                {
+                    CancelInvoke("EndShoot");
+                    EndShoot();
+                }
+                if (_currentState == "isShielding")
+                {
+                    CancelInvoke("EndShield");
+                    StartDropped();
+                }
             }
-            if (_currentState == "isShielding")
-            {
-                CancelInvoke("EndShield");
-                StartDropped();
-            }
+
         }
     }
     #endregion
