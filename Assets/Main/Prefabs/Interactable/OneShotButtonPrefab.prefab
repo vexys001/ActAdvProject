@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _objectColor: {r: 0, g: 1, b: 0, a: 1}
-  _pressedObjectColor: {r: 1, g: 0, b: 0, a: 1}
+  _objectMaterial: {fileID: 0}
+  _pressedObjectMaterial: {fileID: 2100000, guid: 270564aba0dda864bb3907912f9c94ab, type: 2}
   _colliderTag: Player
   _buttonOneShotPressed: 0

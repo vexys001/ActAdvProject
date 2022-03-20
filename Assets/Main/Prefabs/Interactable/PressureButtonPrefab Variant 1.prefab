@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: be4e572f0d8b71f4b8ed4d91e96b2ae9, type: 3}
       propertyPath: m_Name
-      value: PressureButtonPrefab
+      value: PressureButtonPrefab Variant 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be4e572f0d8b71f4b8ed4d91e96b2ae9, type: 3}
@@ -88,8 +88,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _objectColor: {r: 0, g: 1, b: 0, a: 1}
-  _pressedObjectColor: {r: 1, g: 0, b: 0, a: 1}
+  _objectMaterial: {fileID: 0}
+  _pressedObjectMaterial: {fileID: 2100000, guid: 270564aba0dda864bb3907912f9c94ab, type: 2}
   _colliderTag: Player
   _numOfNeededPogs: 3
 --- !u!1 &6677381289137780702 stripped
