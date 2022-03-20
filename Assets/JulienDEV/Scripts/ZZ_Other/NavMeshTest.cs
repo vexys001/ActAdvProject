@@ -45,6 +45,7 @@ public class NavMeshTest : MonoBehaviour
     {
         _target = target;
         _agent.SetDestination(_target);
+
         if (_target == _player.transform.position)
         {
             _agent.stoppingDistance = _targetStoppingDistance;
@@ -96,5 +97,10 @@ public class NavMeshTest : MonoBehaviour
                 GoTo(_target);
             }
         }
+    }
+
+    public void AggroPull()
+    {
+
     }
 }
