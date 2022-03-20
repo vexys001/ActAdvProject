@@ -9,6 +9,7 @@ public class Pog : MonoBehaviour
     public bool StandBy;
     [SerializeField]
     private Collider _collider;
+    [SerializeField]
     private Rigidbody _rb;
     public GameObject itself, stack;
     public AudioSource _audioSource;
@@ -29,8 +30,8 @@ public class Pog : MonoBehaviour
     {
         _currentState = "none";
 
-        _collider = GetComponentInChildren<Collider>();
-        _rb = GetComponentInChildren<Rigidbody>();
+        _collider = transform.GetChild(1).GetComponent<Collider>();
+        _rb = transform.GetChild(1).GetComponent<Rigidbody>();
 
         if (!IsKey)
         {
@@ -83,6 +84,7 @@ public class Pog : MonoBehaviour
     #region Utility
     void EnableGravity()
     {
+        Debug.Log("Unable Gravity");
         _rb.useGravity = true;
         _rb.constraints = RigidbodyConstraints.None;
         _rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -157,6 +159,7 @@ public class Pog : MonoBehaviour
     #region Dropped State
     void StartDropped()
     {
+        Debug.Log("Dropping pog");
         transform.SetParent(null);
         _currentState = "Dropped";
         belongsTo = SystemEnums.Partys.None;
