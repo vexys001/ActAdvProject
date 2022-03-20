@@ -23,11 +23,22 @@ public class AI_Base : MonoBehaviour
 
     private bool _inCombat = false;
 
+    [SerializeField] GameObject _stackHolder = null;
+    private StackObject _stackObject = null;
+    private BoxCollider _col = null;
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _stackObject = _stackHolder.GetComponent<StackObject>();
+        _col = GetComponent<BoxCollider>();
 
         GoTo(_initialPosition.position);
+    }
+
+    private void Start()
+    {
+        ChangeCollider(false);
     }
 
     private void Update()
@@ -101,6 +112,26 @@ public class AI_Base : MonoBehaviour
                 GoTo(_target);
             }
         }
+    }
+
+    private void Attack()
+    {
+        _stackHolder.SendMessage("ShootPog");
+        ChangeCollider(false);
+    }
+
+    private void ChangeCollider(bool removeFromMiddle)
+    {
+        //_col.center += Vector3.down * 0.05f;
+        if (!removeFromMiddle) _stackObject.transform.localPosition += new Vector3(0, 0.032f, 0);
+        else _stackObject.transform.localPosition -= new Vector3(0, 0.032f, 0);
+
+        _col.size = new Vector3(1, 0.064f * _stackObject.pogCount, 1);
+        //_slimeModel.transform.localPosition = new Vector3(0, 0.05f * _stack.pogCount, 0);
+
+        //bottomGO = _stack.lastPogGO;
+
+        _agent.height = 0.064f * _stackObject.pogCount;
     }
 
     public void AggroPull()
