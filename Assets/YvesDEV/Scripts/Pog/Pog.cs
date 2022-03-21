@@ -220,7 +220,7 @@ public class Pog : MonoBehaviour
         transform.SetParent(null);
         transform.localScale = Vector3.one;
         _currentState = "isShielding";
-        transform.position += Vector3.forward * 2;
+        transform.position += Vector3.forward * 1.5f;
 
         _collider.enabled = true;
 
