@@ -390,12 +390,12 @@ GameObject:
   - component: {fileID: 310203697}
   - component: {fileID: 310203696}
   - component: {fileID: 310203695}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FakeDoor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &310203694
 Transform:
@@ -1006,6 +1006,22 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 1702145512076647150, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
+      propertyPath: m_Damping
+      value: 4.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702145512076647150, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
+      propertyPath: m_SmoothingTime
+      value: 0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702145512076647150, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
+      propertyPath: m_DampingWhenOccluded
+      value: 4.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702145512076647150, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
+      propertyPath: m_CollideAgainst.m_Bits
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1702145512076647151, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1
@@ -1130,7 +1146,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1702145512076647150, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 14848d3ea91f8754889338550ba3d6f5, type: 3}
 --- !u!4 &593124056 stripped
 Transform:
