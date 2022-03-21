@@ -31,6 +31,8 @@ public class AI_Base : MonoBehaviour
 
     [SerializeField] GameObject _slimeModel = null;
 
+    public bool DEBUG;
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -52,7 +54,7 @@ public class AI_Base : MonoBehaviour
         //Attack();
         //
 
-        _playerInSightRange = Physics.CheckSphere(transform.position, _sightRange, _whatIsPlayer);
+        _playerInSightRange = (Physics.CheckSphere(transform.position, _sightRange, _whatIsPlayer) && _target.y - transform.position.y > -1f);
         _playerInFleeDistance = Physics.CheckSphere(transform.position, _fleeDistance, _whatIsPlayer);
 
         if (_playerInSightRange == true) _States = _states.chase;
@@ -105,7 +107,7 @@ public class AI_Base : MonoBehaviour
             if (_agent.velocity.magnitude <= 0.15f 
                 && _stackObject.pogCount > 1 
                 && _whenToAttack > _attackTimer
-                && Mathf.Abs(_target.y - transform.position.y) < 1f) Attack();
+                && _target.y - transform.position.y > -1f) Attack();
         }
     }
 
@@ -198,7 +200,6 @@ public class AI_Base : MonoBehaviour
 
     private void GetHit()
     {
-        Debug.Log("Getting hit Enemy");
         if (_stackObject.pogCount > 1)
         {
             _stackHolder.SendMessage("DropPog", StackObject.Positions.Top);
@@ -207,6 +208,15 @@ public class AI_Base : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (DEBUG)
+        {
+            //Debug.DrawRay(bottomGO.transform.position, Vector3.down, Color.red, 50f, false);
+            Gizmos.DrawWireSphere(transform.position, _sightRange);
         }
     }
 }

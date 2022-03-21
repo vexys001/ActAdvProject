@@ -245,17 +245,18 @@ MonoBehaviour:
   _player: {fileID: 0}
   _initialPosition: {fileID: 0}
   _playerInSightRange: 0
-  _sightRange: 30
+  _sightRange: 15
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 2048
-  _targetStoppingDistance: 15
+  _targetStoppingDistance: 10
   _locationStoppingDistance: 0.1
   _playerInFleeDistance: 0
-  _fleeDistance: 10
+  _fleeDistance: 7
   _attackTimer: 3
   _stackHolder: {fileID: 7030302885920637842}
   _slimeModel: {fileID: 0}
+  DEBUG: 1
 --- !u!1001 &7030302887462982492
 PrefabInstance:
   m_ObjectHideFlags: 0
