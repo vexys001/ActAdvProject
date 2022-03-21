@@ -73,6 +73,7 @@ public class Movement : MonoBehaviour
         {
             thirdPersonCamera.SetActive(false);
             aimCamera.SetActive(true);
+            aimCamera.transform.rotation = _stackHolder.transform.rotation;
             theCursor.SetActive(true);
         }
         else if (Input.GetButtonUp("Fire2"))

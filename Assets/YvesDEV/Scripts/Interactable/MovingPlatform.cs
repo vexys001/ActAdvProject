@@ -47,7 +47,7 @@ public class MovingPlatform : MonoBehaviour
         _activated = true;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -61,5 +61,5 @@ public class MovingPlatform : MonoBehaviour
         {
             collision.transform.SetParent(null);
         }
-    }
+    }*/
 }
