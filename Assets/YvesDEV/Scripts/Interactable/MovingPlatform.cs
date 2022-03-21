@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     public Transform StartPoint, EndPoint;
-    public bool _oneMove = false;
+    //public bool _oneMove = false;
     [SerializeField]
     private float _platSpeed = 3;
     [SerializeField] private bool _activated = false;
@@ -26,15 +26,13 @@ public class MovingPlatform : MonoBehaviour
     {
         if (_activated)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _objective.position, _platSpeed * Time.deltaTime);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, _objective.position, _platSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, _objective.position) <= 0.1f)
+            if (Vector3.Distance(this.transform.position, _objective.position) <= 0.1f)
             {
-                if (_oneMove) _activated = false;
-                else ChangeDestination();
+                 ChangeDestination();
             }
         }
-
     }
 
     private void ChangeDestination()
@@ -47,19 +45,19 @@ public class MovingPlatform : MonoBehaviour
         _activated = true;
     }
 
-    /*private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && collision.gameObject.name.Equals("Player"))
         {
-            collision.transform.SetParent(transform);
+            collision.transform.SetParent(this.transform);
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && collision.gameObject.name.Equals("Player"))
         {
             collision.transform.SetParent(null);
         }
-    }*/
+    }
 }

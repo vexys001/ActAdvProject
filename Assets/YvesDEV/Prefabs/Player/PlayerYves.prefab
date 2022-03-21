@@ -447,7 +447,7 @@ MonoBehaviour:
   _acceleration: 6
   _maxSpeed: 9
   gravity: -9.81
-  _jumpForce: 10
+  _jumpForce: 8
   hasJumped: 0
   goingDown: 0
   bottomGO: {fileID: 7721166819259646047}
