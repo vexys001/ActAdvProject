@@ -105,7 +105,7 @@ public class AI_Base : MonoBehaviour
             if (_agent.velocity.magnitude <= 0.15f 
                 && _stackObject.pogCount > 1 
                 && _whenToAttack > _attackTimer
-                && Mathf.Abs(_target.y - transform.position.y) < 3f) Attack();
+                && Mathf.Abs(_target.y - transform.position.y) < 1f) Attack();
         }
     }
 
