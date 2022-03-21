@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     public Transform StartPoint, EndPoint;
-    public bool _oneMove;
+    public bool _oneMove = false;
     [SerializeField]
     private float _platSpeed = 3;
     [SerializeField] private bool _activated = false;
