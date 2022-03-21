@@ -102,7 +102,10 @@ public class AI_Base : MonoBehaviour
             _inCombat = true;
             _whenToAttack += Time.deltaTime;
             GoTo(_player.position);
-            if (_agent.velocity.magnitude <= 0.15f && _stackObject.pogCount > 1 && _whenToAttack > _attackTimer) Attack();
+            if (_agent.velocity.magnitude <= 0.15f 
+                && _stackObject.pogCount > 1 
+                && _whenToAttack > _attackTimer
+                && Mathf.Abs(_target.y - transform.position.y) < 3f) Attack();
         }
     }
 
