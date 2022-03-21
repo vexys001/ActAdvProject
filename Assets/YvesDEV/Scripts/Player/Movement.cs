@@ -249,15 +249,20 @@ public class Movement : MonoBehaviour
             {
                 if (collidedPog.belongsTo == SystemEnums.Partys.Enemy)
                 {
-                    if (_stack.pogCount > 1)
-                    {
-                        _stackHolder.SendMessage("DropPog", StackObject.Positions.Top);
-                        ChangeCollider(false);
-                    }
-                    else Respawn();
+                    GetHit();
                 }
             }
         }
+    }
+
+    private void GetHit()
+    {
+        if (_stack.pogCount > 1)
+        {
+            _stackHolder.SendMessage("DropPog", StackObject.Positions.Top);
+            ChangeCollider(false);
+        }
+        else Respawn();
     }
 
     private void OnDrawGizmos()
