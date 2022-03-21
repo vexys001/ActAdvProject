@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1940208512632802948
 Transform:
@@ -99,7 +99,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6415532196244442459
 Transform:
@@ -143,10 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d5eae9e00ba464d9fc2f11a3cc748d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Modes: 0
   _target: {fileID: 0}
-  _objectColor: {r: 0, g: 1, b: 0, a: 1}
-  _pressedObjectColor: {r: 1, g: 0, b: 0, a: 1}
+  _objectMaterial: {fileID: 0}
+  _pressedObjectMaterial: {fileID: 0}
   _colliderTag: Pog
   _requiredColor: 2
 --- !u!1 &6128931232819714260
@@ -165,7 +164,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7888382507799172670
 Transform:
