@@ -625,7 +625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4828303924331731574}
   - component: {fileID: 4828303924331731568}
-  - component: {fileID: 4828303924331731575}
+  - component: {fileID: 1252747463902894287}
   m_Layer: 0
   m_Name: Aim Camera
   m_TagString: Untagged
@@ -755,7 +755,7 @@ MonoBehaviour:
   - {fileID: 4828303923627189499}
   - {fileID: 4828303922996539648}
   - {fileID: 4828303923268727017}
---- !u!114 &4828303924331731575
+--- !u!114 &1252747463902894287
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -770,7 +770,7 @@ MonoBehaviour:
   m_CollideAgainst:
     serializedVersion: 2
     m_Bits: 1024
-  m_IgnoreTag: Player
+  m_IgnoreTag: 
   m_TransparentLayers:
     serializedVersion: 2
     m_Bits: 0
