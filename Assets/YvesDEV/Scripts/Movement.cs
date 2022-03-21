@@ -119,32 +119,33 @@ public class Movement : MonoBehaviour
         }
         if (_stack.pogCount > 1)
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            /*if (Input.GetButtonDown("Fire1"))
             {
                 _audioSource.PlayOneShot(ShootingAClip);
                 _stackHolder.SendMessage("ShootPog");
                 ChangeCollider(false);
-            }
+            }*/
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButtonDown("Shield"))
             {
                 _stackHolder.SendMessage("ShieldPog");
                 _audioSource.PlayOneShot(ShootingAClip);
                 ChangeCollider(false);
             }
-            if (Input.GetKeyDown(KeyCode.Y))
+
+            /*if (Input.GetKeyDown(KeyCode.Y))
             {
                 _audioSource.PlayOneShot(LandingAClip);
                 _stackHolder.SendMessage("DropPog", StackObject.Positions.Top);
                 ChangeCollider(false);
-            }
+            }*/
 
         }
 
-        if (Input.GetKeyDown(KeyCode.T) && _stack.pogCount > 5)
+        /*if (Input.GetKeyDown(KeyCode.T) && _stack.pogCount > 5)
         {
             _stackHolder.SendMessage("RemoveXNonKeys", 5);
-        }
+        }*/
 
         if (FindGround().Length >= 1)
         {
@@ -158,7 +159,7 @@ public class Movement : MonoBehaviour
                 _audioSource.PlayOneShot(LandingAClip);
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && !hasJumped) Jump();
+            if (Input.GetButtonDown("Jump") && !hasJumped) Jump();
         }
     }
 
