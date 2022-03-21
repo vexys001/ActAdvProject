@@ -210,7 +210,8 @@ public class Movement : MonoBehaviour
 
     private RaycastHit[] FindGround()
     {
-        return Physics.RaycastAll(bottomGO.transform.position, Vector3.down / 20, groundMask);
+        //return Physics.RaycastAll(bottomGO.transform.position, Vector3.down / 20, groundMask);
+        return Physics.BoxCastAll(bottomGO.transform.position, new Vector3(0.4f,0.2f,0.4f), Vector3.down, Quaternion.identity, groundMask);
     }
 
     private void Respawn()
