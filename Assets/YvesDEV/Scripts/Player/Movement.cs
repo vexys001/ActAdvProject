@@ -257,6 +257,7 @@ public class Movement : MonoBehaviour
 
     private void GetHit()
     {
+        Debug.Log("Getting hit Friendly");
         if (_stack.pogCount > 1)
         {
             _stackHolder.SendMessage("DropPog", StackObject.Positions.Top);

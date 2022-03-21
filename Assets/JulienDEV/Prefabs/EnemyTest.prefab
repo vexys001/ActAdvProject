@@ -377,6 +377,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: redEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8845483540792059189, guid: f2c138320b95bf24bb49a11aad81298c, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2c138320b95bf24bb49a11aad81298c, type: 3}
 --- !u!1 &1340904056233501351 stripped
@@ -384,19 +388,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8845483540792059189, guid: f2c138320b95bf24bb49a11aad81298c, type: 3}
   m_PrefabInstance: {fileID: 7519499859646482322}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &7133736924099922899
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1340904056233501351}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.007826625, y: 0.008769229, z: 0.0076256697}
-  m_Center: {x: -0.00022816236, y: 0.0010908477, z: 0.0038507855}
 --- !u!54 &2609805886777084088
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -413,6 +404,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!65 &7133736924099922899
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340904056233501351}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.007826625, y: 0.008769229, z: 0.0076256697}
+  m_Center: {x: -0.00022816236, y: 0.0010908477, z: 0.0038507855}
 --- !u!114 &4479268468488551828
 MonoBehaviour:
   m_ObjectHideFlags: 0

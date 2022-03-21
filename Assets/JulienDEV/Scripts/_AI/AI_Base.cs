@@ -190,17 +190,23 @@ public class AI_Base : MonoBehaviour
             {
                 if (collidedPog.belongsTo == SystemEnums.Partys.Ally)
                 {
-                    if (_stackObject.pogCount > 1)
-                    {
-                        _stackHolder.SendMessage("DropPog", StackObject.Positions.Top);
-                        ChangeCollider(true);
-                    }
-                    else
-                    {
-                        Destroy(gameObject);
-                    }
+                    GetHit();
                 }
             }
+        }
+    }
+
+    private void GetHit()
+    {
+        Debug.Log("Getting hit Enemy");
+        if (_stackObject.pogCount > 1)
+        {
+            _stackHolder.SendMessage("DropPog", StackObject.Positions.Top);
+            ChangeCollider(true);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }
