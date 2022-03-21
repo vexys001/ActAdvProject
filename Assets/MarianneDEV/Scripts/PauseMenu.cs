@@ -85,4 +85,9 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("_MainMenu");
         
     }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene("_MainTest");
+    }
 }
