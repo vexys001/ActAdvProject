@@ -256,7 +256,7 @@ MonoBehaviour:
   _attackTimer: 3
   _stackHolder: {fileID: 7030302885920637842}
   _slimeModel: {fileID: 0}
-  DEBUG: 1
+  DEBUG: 0
 --- !u!1001 &7030302887462982492
 PrefabInstance:
   m_ObjectHideFlags: 0
