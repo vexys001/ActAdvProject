@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     public Transform StartPoint, EndPoint;
+    public bool _oneMove;
     [SerializeField]
     private float _platSpeed = 3;
     [SerializeField] private bool _activated = false;
@@ -27,9 +28,13 @@ public class MovingPlatform : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, _objective.position, _platSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, _objective.position) <= 0.1f) ChangeDestination();
+            if (Vector3.Distance(transform.position, _objective.position) <= 0.1f)
+            {
+                if (_oneMove) _activated = false;
+                else ChangeDestination();
+            }
         }
-        
+
     }
 
     private void ChangeDestination()
