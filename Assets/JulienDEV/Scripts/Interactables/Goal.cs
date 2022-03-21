@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Goal : MonoBehaviour
         if (other.tag == "Player")
         {
             Debug.Log($"Goal reached!");
+            SceneManager.LoadScene(sceneName: "EndScene");
         }
     }
 }
