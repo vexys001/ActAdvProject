@@ -444,10 +444,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stackHolder: {fileID: 0}
   _slimeModel: {fileID: 1760058479546563144}
-  _acceleration: 8
-  _maxSpeed: 12
+  _acceleration: 6
+  _maxSpeed: 9
   gravity: -9.81
-  _jumpForce: 6
+  _jumpForce: 10
   hasJumped: 0
   goingDown: 0
   bottomGO: {fileID: 7721166819259646047}
